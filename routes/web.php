@@ -13,3 +13,7 @@ Route::get('/dashboard', function () {
 Route::get('/users', function () {
     return view('users');
 })->name('users');
+
+Route::get('/users/create', function () {
+    return view('users-create');
+})->name('users.create');
