@@ -21,3 +21,7 @@ Route::get('/users/create', function () {
 Route::get('/lembaga', function () {
     return view('lembaga');
 })->name('lembaga');
+
+Route::get('/guru', function () {
+    return view('guru');
+})->name('guru');

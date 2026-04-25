@@ -41,8 +41,8 @@
                     </a>
 
                     <!-- Guru -->
-                    <a href="#" class="flex items-center gap-4 px-8 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 font-medium transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-500"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                    <a href="{{ route('guru') }}" class="flex items-center gap-4 px-8 py-2.5 transition-colors {{ request()->routeIs('guru') ? 'bg-[#f0fbf7] text-[#1c7b5b] font-bold border-r-[3px] border-[#1c7b5b]' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 font-medium' }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="{{ request()->routeIs('guru') ? '' : 'text-slate-500' }}"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
                         Guru
                     </a>
 
@@ -97,7 +97,7 @@
                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                             <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
                         </div>
-                        <input type="text" class="block w-full pl-10 pr-3 py-2 border-0 bg-gray-50 rounded-md text-gray-900 placeholder-gray-400 focus:ring-0 sm:text-sm" placeholder="Cari akun...">
+                        <input type="text" class="block w-full pl-10 pr-3 py-2 border-0 bg-gray-50 rounded-md text-gray-900 placeholder-gray-400 focus:ring-0 sm:text-[13px]" placeholder="Cari guru, ID, atau peralatan...">
                     </div>
                 </div>
                 
