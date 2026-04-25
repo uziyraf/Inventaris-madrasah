@@ -25,3 +25,7 @@ Route::get('/lembaga', function () {
 Route::get('/guru', function () {
     return view('guru');
 })->name('guru');
+
+Route::get('/murid', function () {
+    return view('murid');
+})->name('murid');
