@@ -129,8 +129,19 @@
 
             <!-- Main Scrollable Area -->
             <div class="flex-1 overflow-y-auto p-8 relative">
-                <div class="max-w-[1200px] mx-auto">
-                    @yield('content')
+                <div class="max-w-[1200px] mx-auto min-h-full flex flex-col">
+                    <div class="flex-1">
+                        @yield('content')
+                    </div>
+                    
+                    <!-- Footer -->
+                    <div class="mt-8 pt-8 flex justify-between items-center text-[10px] font-bold text-gray-400 tracking-wider uppercase pb-4">
+                        <p>© 2024 SISTEM MANAJER INVENTARIS</p>
+                        <div class="flex gap-6">
+                            <a href="#" class="hover:text-gray-600 transition-colors">KEBIJAKAN PRIVASI</a>
+                            <a href="#" class="hover:text-gray-600 transition-colors">STATUS SISTEM</a>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- Floating Action Button -->
