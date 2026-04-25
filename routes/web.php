@@ -29,3 +29,7 @@ Route::get('/guru', function () {
 Route::get('/murid', function () {
     return view('murid');
 })->name('murid');
+
+Route::get('/inventaris', function () {
+    return view('inventaris');
+})->name('inventaris');
