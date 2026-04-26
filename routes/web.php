@@ -33,3 +33,16 @@ Route::get('/murid', function () {
 Route::get('/inventaris', function () {
     return view('inventaris');
 })->name('inventaris');
+
+Route::get('/pengurus', function () {
+    return view('pengurus');
+})->name('pengurus');
+
+// Authentication Routes
+Route::get('/login', function () {
+    return view('auth.login');
+})->name('login');
+
+Route::get('/register', function () {
+    return view('auth.register');
+})->name('register');
