@@ -7,10 +7,31 @@ use Illuminate\Http\Request;
 
 class PengurusController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $penguruses = Pengurus::latest()->paginate(10);
-        return view('pengurus', compact('penguruses'));
+        // Panggil query dasarnya dulu
+        $query = Inventaris::query();
+
+        // Filter berdasarkan kolom pencarian
+        if ($request->filled('search')) {
+            $query->where('aset', 'like', '%' . $request->search . '%')
+                ->orWhere('keterangan', 'like', '%' . $request->search . '%');
+        }
+
+        // Filter berdasarkan Kategori
+        if ($request->filled('kategori')) {
+            $query->where('kategori', $request->kategori);
+        }
+
+        // Filter berdasarkan Kondisi
+        if ($request->filled('kondisi')) {
+            $query->where('kondisi', $request->kondisi);
+        }
+
+        // Eksekusi query, paginasi, dan pertahankan filter saat pindah halaman
+        $inventaris = $query->latest()->paginate(10)->appends($request->all());
+
+        return view('user.inventaris', compact('inventaris'));
     }
 
     public function store(Request $request)

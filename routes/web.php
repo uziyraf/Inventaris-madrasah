@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\InventarisController;
 use App\Http\Controllers\PengurusController;
 use App\Http\Controllers\SantriController;
 use Illuminate\Support\Facades\Route;
@@ -37,9 +38,11 @@ Route::post('/murid', [SantriController::class, 'store'])->name('murid.store');
 Route::put('/murid/{id}', [SantriController::class, 'update'])->name('murid.update');
 Route::delete('/murid/{id}', [SantriController::class, 'destroy'])->name('murid.destroy');
 
-Route::get('/inventaris', function () {
-    return view('inventaris');
-})->name('inventaris');
+// Rute CRUD Inventaris
+Route::get('/inventaris', [InventarisController::class, 'index'])->name('inventaris');
+Route::post('/inventaris', [InventarisController::class, 'store'])->name('inventaris.store');
+Route::put('/inventaris/{id}', [InventarisController::class, 'update'])->name('inventaris.update');
+Route::delete('/inventaris/{id}', [InventarisController::class, 'destroy'])->name('inventaris.destroy');
 
 // Rute CRUD Pengurus
 Route::get('/pengurus', [PengurusController::class, 'index'])->name('pengurus');
