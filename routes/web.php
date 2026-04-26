@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InventarisController;
+use App\Http\Controllers\LembagaController;
 use App\Http\Controllers\PengurusController;
 use App\Http\Controllers\SantriController;
 use Illuminate\Support\Facades\Route;
@@ -20,9 +21,8 @@ Route::get('/users/create', function () {
     return view('users-create');
 })->name('users.create');
 
-Route::get('/lembaga', function () {
-    return view('lembaga');
-})->name('lembaga');
+Route::get('/lembaga', [LembagaController::class, 'index'])->name('lembaga');
+Route::put('/lembaga/update', [LembagaController::class, 'update'])->name('lembaga.update');
 
 use App\Http\Controllers\GuruController;
 
