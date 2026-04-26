@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PengurusController;
 use App\Http\Controllers\SantriController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,9 +41,11 @@ Route::get('/inventaris', function () {
     return view('inventaris');
 })->name('inventaris');
 
-Route::get('/pengurus', function () {
-    return view('pengurus');
-})->name('pengurus');
+// Rute CRUD Pengurus
+Route::get('/pengurus', [PengurusController::class, 'index'])->name('pengurus');
+Route::post('/pengurus', [PengurusController::class, 'store'])->name('pengurus.store');
+Route::put('/pengurus/{id}', [PengurusController::class, 'update'])->name('pengurus.update');
+Route::delete('/pengurus/{id}', [PengurusController::class, 'destroy'])->name('pengurus.destroy');
 
 // Authentication Routes
 Route::get('/login', function () {
