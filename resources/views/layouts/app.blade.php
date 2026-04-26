@@ -25,7 +25,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg>
                 </div>
                 <div>
-                    <h1 class="text-[17px] font-extrabold text-[#1e293b] tracking-tight leading-none">Inventory Manager</h1>
+                    <h1 class="text-[17px] font-extrabold text-[#1e293b] tracking-tight leading-none">Manajer Inventaris</h1>
                     <p class="text-[11px] font-medium text-gray-400 mt-1">Portal Institusi</p>
                 </div>
             </div>
@@ -58,8 +58,8 @@
                     </a>
 
                     <!-- Pengurus -->
-                    <a href="#" class="flex items-center gap-4 px-8 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 font-medium transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-500"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    <a href="{{ route('pengurus') }}" class="flex items-center gap-4 px-8 py-2.5 transition-colors {{ request()->routeIs('pengurus') ? 'bg-[#f0fbf7] text-[#1c7b5b] font-bold border-r-[3px] border-[#1c7b5b]' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 font-medium' }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="{{ request()->routeIs('pengurus') ? '' : 'text-slate-500' }}"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                         Pengurus
                     </a>
 
@@ -102,7 +102,7 @@
                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                             <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
                         </div>
-                        <input type="text" class="block w-full pl-10 pr-3 py-2 border-0 bg-[#f8fafc] rounded-md text-gray-900 placeholder-gray-400 focus:ring-0 sm:text-[13px]" placeholder="Cari nama murid, ID, atau peralatan...">
+                        <input type="text" class="block w-full pl-10 pr-3 py-2 border-0 bg-[#f8fafc] rounded-md text-gray-900 placeholder-gray-400 focus:ring-0 sm:text-[13px]" placeholder="Cari pengurus berdasarkan nama atau peran...">
                     </div>
                 </div>
                 
@@ -124,10 +124,10 @@
                     <!-- Profile -->
                     <div class="flex items-center gap-3">
                         <div class="text-right">
-                            <p class="text-[13px] font-bold text-[#1e293b] leading-none">Admin Utama</p>
-                            <p class="text-[10px] font-bold text-gray-400 mt-1 tracking-wide">Profil Administrator</p>
+                            <p class="text-[13px] font-bold text-[#1e293b] leading-none">Admin Alpha</p>
+                            <p class="text-[10px] font-bold text-gray-400 mt-1 tracking-wide">Super Admin</p>
                         </div>
-                        <img src="https://ui-avatars.com/api/?name=Admin+Utama&background=1e293b&color=fff" alt="Admin" class="w-9 h-9 rounded-full border border-gray-200">
+                        <img src="https://ui-avatars.com/api/?name=Admin+Alpha&background=1e293b&color=fff" alt="Admin" class="w-9 h-9 rounded-full border border-gray-200">
                     </div>
                 </div>
             </header>
