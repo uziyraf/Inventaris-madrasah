@@ -23,9 +23,13 @@ Route::get('/lembaga', function () {
     return view('lembaga');
 })->name('lembaga');
 
-Route::get('/guru', function () {
-    return view('guru');
-})->name('guru');
+use App\Http\Controllers\GuruController;
+
+// Rute CRUD Guru
+Route::get('/guru', [GuruController::class, 'index'])->name('guru');
+Route::post('/guru', [GuruController::class, 'store'])->name('guru.store');
+Route::put('/guru/{id}', [GuruController::class, 'update'])->name('guru.update');
+Route::delete('/guru/{id}', [GuruController::class, 'destroy'])->name('guru.destroy');
 
 Route::get('/murid', [SantriController::class, 'index'])->name('murid');
 Route::post('/murid', [SantriController::class, 'store'])->name('murid.store');
