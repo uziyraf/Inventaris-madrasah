@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SantriController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -26,9 +27,10 @@ Route::get('/guru', function () {
     return view('guru');
 })->name('guru');
 
-Route::get('/murid', function () {
-    return view('murid');
-})->name('murid');
+Route::get('/murid', [SantriController::class, 'index'])->name('murid');
+Route::post('/murid', [SantriController::class, 'store'])->name('murid.store');
+Route::put('/murid/{id}', [SantriController::class, 'update'])->name('murid.update');
+Route::delete('/murid/{id}', [SantriController::class, 'destroy'])->name('murid.destroy');
 
 Route::get('/inventaris', function () {
     return view('inventaris');
