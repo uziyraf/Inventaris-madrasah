@@ -100,10 +100,13 @@
                         <th scope="col" class="p-4 w-12 text-center">
                             <div class="w-4 h-4 border border-gray-300 rounded-sm"></div>
                         </th>
-                        <th scope="col" class="px-6 py-5">NAMA & ID</th>
+                        <th scope="col" class="px-6 py-5">NAMA SANTRI</th>
+                        <th scope="col" class="px-6 py-5">TTL</th>
+                        <th scope="col" class="px-6 py-5">ALAMAT</th>
+                        <th scope="col" class="px-6 py-5">NO. INDUK</th>
                         <th scope="col" class="px-6 py-5">KELAS</th>
-                        <th scope="col" class="px-6 py-5">PERALATAN DIPINJAM</th>
-                        <th scope="col" class="px-6 py-5">STATUS</th>
+                        <th scope="col" class="px-6 py-5">NAMA ORANG TUA</th>
+                        <th scope="col" class="px-6 py-5">ASAL MADIN</th>
                         <th scope="col" class="px-6 py-5 text-right">AKSI</th>
                     </tr>
                 </thead>
@@ -119,20 +122,26 @@
                             </div>
                             <div>
                                 <p class="font-bold text-[#1e293b] text-[13px]">Aris Munandar</p>
-                                <p class="text-[11px] text-gray-400 font-medium mt-0.5 tracking-wide">ID: 2024001</p>
                             </div>
                         </td>
                         <td class="px-6 py-5">
-                            <span class="text-gray-700 text-[13px]">XII IPA 1</span>
+                            <p class="text-[13px] text-gray-700 font-medium">Blora,</p>
+                            <p class="text-[12px] text-gray-500 mt-0.5">14 Feb 2008</p>
                         </td>
                         <td class="px-6 py-5">
-                            <div class="flex gap-2">
-                                <span class="bg-[#f0fbf7] text-[#1c7b5b] text-[9px] font-bold px-2 py-1 rounded-sm border border-[#1c7b5b]/20 uppercase tracking-wider">LAPTOP DELL #02</span>
-                                <span class="bg-gray-50 text-gray-600 text-[9px] font-bold px-2 py-1 rounded-sm border border-gray-200 uppercase tracking-wider">MOUSE USB</span>
-                            </div>
+                            <p class="text-[13px] text-gray-700 truncate max-w-[120px]" title="Ds. Sambongrejo RT 02">Ds. Sambongrejo</p>
                         </td>
                         <td class="px-6 py-5">
-                            <span class="bg-[#f0fbf7] text-[#1c7b5b] text-[9px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">LENGKAP</span>
+                            <span class="text-[13px] text-gray-700 font-medium font-mono">2024001</span>
+                        </td>
+                        <td class="px-6 py-5">
+                            <span class="text-[13px] text-gray-700 font-bold">XII IPA 1</span>
+                        </td>
+                        <td class="px-6 py-5">
+                            <span class="text-[13px] text-gray-700">Sutrisno</span>
+                        </td>
+                        <td class="px-6 py-5">
+                            <span class="text-[13px] text-gray-700">Madin Al-Hidayah</span>
                         </td>
                         <td class="px-6 py-5 text-right">
                             <div class="flex items-center justify-end gap-3">
@@ -152,24 +161,31 @@
                             <div class="w-4 h-4 border border-gray-300 rounded-sm mx-auto"></div>
                         </td>
                         <td class="px-6 py-5 flex items-center gap-4">
-                            <div class="w-9 h-9 rounded-sm bg-[#e8f5f1] text-[#1c7b5b] flex items-center justify-center font-bold text-xs tracking-wide">
+                            <div class="w-9 h-9 rounded-sm bg-orange-50 text-orange-600 flex items-center justify-center font-bold text-xs tracking-wide">
                                 BP
                             </div>
                             <div>
                                 <p class="font-bold text-[#1e293b] text-[13px]">Bambang Pamungkas</p>
-                                <p class="text-[11px] text-gray-400 font-medium mt-0.5 tracking-wide">ID: 2024042</p>
                             </div>
                         </td>
                         <td class="px-6 py-5">
-                            <span class="text-gray-700 text-[13px]">XI IPS 3</span>
+                            <p class="text-[13px] text-gray-700 font-medium">Cepu,</p>
+                            <p class="text-[12px] text-gray-500 mt-0.5">21 Sep 2009</p>
                         </td>
                         <td class="px-6 py-5">
-                            <div class="flex gap-2">
-                                <span class="bg-orange-50 text-orange-600 text-[9px] font-bold px-2 py-1 rounded-sm border border-orange-200 uppercase tracking-wider">TABLET SAMSUNG #14</span>
-                            </div>
+                            <p class="text-[13px] text-gray-700 truncate max-w-[120px]" title="Jl. Ronggolawe No. 4">Jl. Ronggolawe</p>
                         </td>
                         <td class="px-6 py-5">
-                            <span class="bg-orange-50 text-orange-600 text-[9px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">TERLAMBAT</span>
+                            <span class="text-[13px] text-gray-700 font-medium font-mono">2024042</span>
+                        </td>
+                        <td class="px-6 py-5">
+                            <span class="text-[13px] text-gray-700 font-bold">XI IPS 3</span>
+                        </td>
+                        <td class="px-6 py-5">
+                            <span class="text-[13px] text-gray-700">Budi Santoso</span>
+                        </td>
+                        <td class="px-6 py-5">
+                            <span class="text-[13px] text-gray-700">Madin As-Salam</span>
                         </td>
                         <td class="px-6 py-5 text-right">
                             <div class="flex items-center justify-end gap-3">
@@ -189,22 +205,31 @@
                             <div class="w-4 h-4 border border-gray-300 rounded-sm mx-auto"></div>
                         </td>
                         <td class="px-6 py-5 flex items-center gap-4">
-                            <div class="w-9 h-9 rounded-sm bg-[#e8f5f1] text-[#1c7b5b] flex items-center justify-center font-bold text-xs tracking-wide">
+                            <div class="w-9 h-9 rounded-sm bg-pink-50 text-pink-600 flex items-center justify-center font-bold text-xs tracking-wide">
                                 CS
                             </div>
                             <div>
                                 <p class="font-bold text-[#1e293b] text-[13px]">Citra Sari</p>
-                                <p class="text-[11px] text-gray-400 font-medium mt-0.5 tracking-wide">ID: 2024089</p>
                             </div>
                         </td>
                         <td class="px-6 py-5">
-                            <span class="text-gray-700 text-[13px]">X IPA 2</span>
+                            <p class="text-[13px] text-gray-700 font-medium">Rembang,</p>
+                            <p class="text-[12px] text-gray-500 mt-0.5">05 Apr 2010</p>
                         </td>
                         <td class="px-6 py-5">
-                            <span class="text-[12px] text-gray-400">Tidak ada pinjaman</span>
+                            <p class="text-[13px] text-gray-700 truncate max-w-[120px]" title="Ds. Pamotan RT 01/02">Ds. Pamotan</p>
                         </td>
                         <td class="px-6 py-5">
-                            <span class="bg-gray-100 text-gray-500 text-[9px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">IDLE</span>
+                            <span class="text-[13px] text-gray-700 font-medium font-mono">2024089</span>
+                        </td>
+                        <td class="px-6 py-5">
+                            <span class="text-[13px] text-gray-700 font-bold">X IPA 2</span>
+                        </td>
+                        <td class="px-6 py-5">
+                            <span class="text-[13px] text-gray-700">Hasanudin</span>
+                        </td>
+                        <td class="px-6 py-5">
+                            <span class="text-[13px] text-gray-700">Madin Al-Ikhlas</span>
                         </td>
                         <td class="px-6 py-5 text-right">
                             <div class="flex items-center justify-end gap-3">
