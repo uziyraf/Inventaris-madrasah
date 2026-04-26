@@ -102,46 +102,30 @@
             <table class="w-full text-left text-sm text-gray-600">
                 <thead class="text-[11px] text-gray-500 font-bold tracking-widest uppercase border-b border-gray-100">
                     <tr>
-                        <th scope="col" class="px-6 py-5">PENGURUS</th>
-                        <th scope="col" class="px-6 py-5">PERAN</th>
-                        <th scope="col" class="px-6 py-5">INFO KONTAK</th>
-                        <th scope="col" class="px-6 py-5">AKTIF TERAKHIR</th>
-                        <th scope="col" class="px-6 py-5">STATUS</th>
+                        <th scope="col" class="px-6 py-5">JABATAN</th>
+                        <th scope="col" class="px-6 py-5">NAMA</th>
+                        <th scope="col" class="px-6 py-5">ALAMAT</th>
+                        <th scope="col" class="px-6 py-5">KETERANGAN</th>
                         <th scope="col" class="px-6 py-5 text-right">AKSI</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-100 bg-white">
                     <!-- Row 1 -->
                     <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-6 py-4">
+                            <span class="inline-block bg-[#e2f5ec] text-[#1c7b5b] text-[11px] font-bold px-2.5 py-1 rounded-sm leading-tight">Kepala Yayasan</span>
+                        </td>
                         <td class="px-6 py-4 flex items-center gap-3">
                             <img src="https://i.pravatar.cc/150?img=11" alt="Avatar" class="w-10 h-10 rounded-full border border-gray-200">
                             <div>
                                 <p class="font-bold text-[#1e293b] text-[14px]">Dr. Aris Setiawan</p>
-                                <p class="text-[11px] text-gray-400 font-medium mt-0.5">ID: ADM-2023-001</p>
                             </div>
                         </td>
                         <td class="px-6 py-4">
-                            <span class="inline-block bg-[#e2f5ec] text-[#1c7b5b] text-[11px] font-bold px-2.5 py-1 rounded-sm leading-tight">Manajer<br>Inventaris</span>
+                            <p class="text-[13px] text-gray-700 truncate max-w-[200px]" title="Jl. Merdeka No. 1, Jakarta">Jl. Merdeka No. 1</p>
                         </td>
                         <td class="px-6 py-4">
-                            <div class="flex items-center gap-2 mb-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                                <span class="text-[13px] text-gray-600">aris.s@institute.id</span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                                <span class="text-[12px] text-gray-500">+62 812-3456-7890</span>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4">
-                            <p class="text-[13px] text-gray-800">Hari ini,</p>
-                            <p class="text-[12px] text-gray-500">09:45</p>
-                        </td>
-                        <td class="px-6 py-4">
-                            <span class="inline-flex items-center gap-1.5 text-[#1c7b5b] text-[12px] font-bold">
-                                <div class="w-1.5 h-1.5 rounded-full bg-[#1c7b5b]"></div>
-                                Online
-                            </span>
+                            <span class="text-[13px] text-gray-600">Ketua Pengurus Harian</span>
                         </td>
                         <td class="px-6 py-4 text-right">
                             <div class="flex items-center justify-end gap-3">
@@ -157,35 +141,20 @@
                     
                     <!-- Row 2 -->
                     <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-6 py-4">
+                            <span class="inline-block bg-blue-50 text-blue-700 text-[11px] font-bold px-2.5 py-1 rounded-sm leading-tight">Bendahara</span>
+                        </td>
                         <td class="px-6 py-4 flex items-center gap-3">
                             <img src="https://i.pravatar.cc/150?img=5" alt="Avatar" class="w-10 h-10 rounded-full border border-gray-200">
                             <div>
                                 <p class="font-bold text-[#1e293b] text-[14px]">Maya Indah</p>
-                                <p class="text-[11px] text-gray-400 font-medium mt-0.5">ID: STF-2023-042</p>
                             </div>
                         </td>
                         <td class="px-6 py-4">
-                            <span class="inline-block bg-gray-100 text-gray-700 text-[11px] font-bold px-2.5 py-1 rounded-sm leading-tight">Staf</span>
+                            <p class="text-[13px] text-gray-700 truncate max-w-[200px]" title="Komp. Griya Asri Blok C2">Komp. Griya Asri Blok C2</p>
                         </td>
                         <td class="px-6 py-4">
-                            <div class="flex items-center gap-2 mb-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                                <span class="text-[13px] text-gray-600">maya.indah@institute.id</span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                                <span class="text-[12px] text-gray-500">+62 813-8888-2222</span>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4">
-                            <p class="text-[13px] text-gray-800">Kemarin,</p>
-                            <p class="text-[12px] text-gray-500">16:20</p>
-                        </td>
-                        <td class="px-6 py-4">
-                            <span class="inline-flex items-center gap-1.5 text-gray-500 text-[12px] font-bold">
-                                <div class="w-1.5 h-1.5 rounded-full bg-gray-400"></div>
-                                Offline
-                            </span>
+                            <span class="text-[13px] text-gray-600">Pengelola Keuangan Pusat</span>
                         </td>
                         <td class="px-6 py-4 text-right">
                             <div class="flex items-center justify-end gap-3">
@@ -201,35 +170,20 @@
 
                     <!-- Row 3 -->
                     <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-6 py-4">
+                            <span class="inline-block bg-orange-50 text-orange-700 text-[11px] font-bold px-2.5 py-1 rounded-sm leading-tight">Sekretaris</span>
+                        </td>
                         <td class="px-6 py-4 flex items-center gap-3">
                             <img src="https://i.pravatar.cc/150?img=15" alt="Avatar" class="w-10 h-10 rounded-full border border-gray-200">
                             <div>
                                 <p class="font-bold text-[#1e293b] text-[14px]">Budi Santoso</p>
-                                <p class="text-[11px] text-gray-400 font-medium mt-0.5">ID: STF-2023-015</p>
                             </div>
                         </td>
                         <td class="px-6 py-4">
-                            <span class="inline-block bg-[#eff6ff] text-blue-700 text-[11px] font-bold px-2.5 py-1 rounded-sm leading-tight">Petugas<br>Pengadaan</span>
+                            <p class="text-[13px] text-gray-700 truncate max-w-[200px]" title="Jl. Sudirman No. 45, Bandung">Jl. Sudirman No. 45</p>
                         </td>
                         <td class="px-6 py-4">
-                            <div class="flex items-center gap-2 mb-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                                <span class="text-[13px] text-gray-600">budi.s@institute.id</span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                                <span class="text-[12px] text-gray-500">+62 811-0000-1111</span>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4">
-                            <p class="text-[13px] text-gray-800">3 jam yang</p>
-                            <p class="text-[12px] text-gray-800">lalu</p>
-                        </td>
-                        <td class="px-6 py-4">
-                            <span class="inline-flex items-center gap-1.5 text-[#1c7b5b] text-[12px] font-bold">
-                                <div class="w-1.5 h-1.5 rounded-full bg-[#1c7b5b]"></div>
-                                Online
-                            </span>
+                            <span class="text-[13px] text-gray-600">Bagian Administrasi UMUM</span>
                         </td>
                         <td class="px-6 py-4 text-right">
                             <div class="flex items-center justify-end gap-3">
@@ -245,34 +199,20 @@
 
                     <!-- Row 4 -->
                     <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-6 py-4">
+                            <span class="inline-block bg-purple-50 text-purple-700 text-[11px] font-bold px-2.5 py-1 rounded-sm leading-tight">Anggota</span>
+                        </td>
                         <td class="px-6 py-4 flex items-center gap-3">
                             <img src="https://i.pravatar.cc/150?img=9" alt="Avatar" class="w-10 h-10 rounded-full border border-gray-200">
                             <div>
                                 <p class="font-bold text-[#1e293b] text-[14px]">Siti Aminah</p>
-                                <p class="text-[11px] text-gray-400 font-medium mt-0.5">ID: ADM-2022-005</p>
                             </div>
                         </td>
                         <td class="px-6 py-4">
-                            <span class="inline-block bg-[#e2f5ec] text-[#1c7b5b] text-[11px] font-bold px-2.5 py-1 rounded-sm leading-tight">Manajer<br>Inventaris</span>
+                            <p class="text-[13px] text-gray-700 truncate max-w-[200px]" title="Jl. Ahmad Yani No. 12">Jl. Ahmad Yani No. 12</p>
                         </td>
                         <td class="px-6 py-4">
-                            <div class="flex items-center gap-2 mb-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                                <span class="text-[13px] text-gray-600">siti.a@institute.id</span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                                <span class="text-[12px] text-gray-500">+62 856-4321-9876</span>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4">
-                            <p class="text-[13px] text-gray-800">15 Mei 2024</p>
-                        </td>
-                        <td class="px-6 py-4">
-                            <span class="inline-flex items-center gap-1.5 bg-red-50 text-red-600 text-[10px] px-2.5 py-1 rounded-sm font-bold uppercase tracking-wider">
-                                <div class="w-1.5 h-1.5 rounded-full bg-red-500"></div>
-                                Ditangguhkan
-                            </span>
+                            <span class="text-[13px] text-gray-600">Seksi Pembangunan</span>
                         </td>
                         <td class="px-6 py-4 text-right">
                             <div class="flex items-center justify-end gap-3">

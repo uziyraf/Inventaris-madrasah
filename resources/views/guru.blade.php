@@ -52,11 +52,13 @@
             <table class="w-full text-left text-sm text-gray-600">
                 <thead class="text-[11px] text-gray-500 font-bold tracking-widest uppercase border-b border-gray-200">
                     <tr>
-                        <th scope="col" class="px-6 py-5">NAMA GURU</th>
-                        <th scope="col" class="px-6 py-5">NOMOR INDUK</th>
-                        <th scope="col" class="px-6 py-5">DEPARTEMEN</th>
-                        <th scope="col" class="px-6 py-5">INVENTARIS YANG DITUGASKAN</th>
-                        <th scope="col" class="px-6 py-5">STATUS</th>
+                        <th scope="col" class="px-6 py-5">NAMA USTADZ/DZAH</th>
+                        <th scope="col" class="px-6 py-5">TTL</th>
+                        <th scope="col" class="px-6 py-5">ALAMAT</th>
+                        <th scope="col" class="px-6 py-5">L/P</th>
+                        <th scope="col" class="px-6 py-5">THN MENGAJAR</th>
+                        <th scope="col" class="px-6 py-5">IJAZAH TERAKHIR</th>
+                        <th scope="col" class="px-6 py-5">NIK</th>
                         <th scope="col" class="px-6 py-5 text-right">AKSI</th>
                     </tr>
                 </thead>
@@ -65,32 +67,31 @@
                     <tr class="hover:bg-gray-50 transition-colors">
                         <td class="px-6 py-5 flex items-center gap-4">
                             <div class="w-10 h-10 rounded-full bg-[#e8f5f1] text-[#1c7b5b] flex items-center justify-center font-bold text-sm tracking-wide">
-                                JD
+                                AF
                             </div>
                             <div>
-                                <p class="font-semibold text-gray-900 text-[14px]">Dr. Jane Doe</p>
-                                <p class="text-[12px] text-gray-400 mt-0.5">jane.doe@academy.edu</p>
+                                <p class="font-semibold text-gray-900 text-[14px]">Ust. Ahmad Fadil</p>
+                                <p class="text-[12px] text-gray-400 mt-0.5">a.fadil@madrasah.sch.id</p>
                             </div>
                         </td>
                         <td class="px-6 py-5">
-                            <p class="text-[13px] text-gray-700 font-medium font-mono">TCH-</p>
-                            <p class="text-[13px] text-gray-700 font-medium font-mono mt-0.5">2023-001</p>
+                            <p class="text-[13px] text-gray-700 font-medium">Jakarta,</p>
+                            <p class="text-[12px] text-gray-500 mt-0.5">12 Mei 1985</p>
                         </td>
                         <td class="px-6 py-5">
-                            <span class="bg-gray-100 text-gray-600 text-[10px] font-bold px-2 py-1 rounded-sm uppercase tracking-wider">COMPUTER<br>SCIENCE</span>
+                            <p class="text-[13px] text-gray-700 truncate max-w-[150px]" title="Jl. Merdeka No. 45, Jakarta Selatan">Jl. Merdeka No. 45</p>
                         </td>
                         <td class="px-6 py-5">
-                            <div class="flex flex-wrap gap-1.5">
-                                <span class="bg-[#f0fbf7] text-[#1c7b5b] text-[10px] font-bold px-2 py-1 rounded-sm border border-[#1c7b5b]/10">MacBook Pro 14"</span>
-                                <span class="bg-[#f0fbf7] text-[#1c7b5b] text-[10px] font-bold px-2 py-1 rounded-sm border border-[#1c7b5b]/10">iPad Air</span>
-                                <span class="bg-gray-50 text-gray-500 text-[10px] font-bold px-2 py-1 rounded-sm border border-gray-200">+2 lagi</span>
-                            </div>
+                            <span class="bg-blue-50 text-blue-600 text-[11px] font-bold px-2.5 py-1 rounded-sm">L</span>
                         </td>
                         <td class="px-6 py-5">
-                            <div class="inline-flex items-center gap-1.5 bg-[#f0fbf7] px-2.5 py-1 rounded-full border border-green-100">
-                                <div class="w-1.5 h-1.5 rounded-full bg-[#1c7b5b]"></div>
-                                <span class="text-[#1c7b5b] text-[11px] font-bold">Terverifikasi</span>
-                            </div>
+                            <span class="text-[13px] text-gray-700 font-medium">2010</span>
+                        </td>
+                        <td class="px-6 py-5">
+                            <span class="text-[13px] text-gray-700">S1 Pend. Agama Islam</span>
+                        </td>
+                        <td class="px-6 py-5">
+                            <p class="text-[13px] text-gray-700 font-medium font-mono">3174123456780001</p>
                         </td>
                         <td class="px-6 py-5 text-right">
                             <div class="flex items-center justify-end gap-3">
@@ -107,32 +108,32 @@
                     <!-- Row 2 -->
                     <tr class="hover:bg-gray-50 transition-colors">
                         <td class="px-6 py-5 flex items-center gap-4">
-                            <div class="w-10 h-10 rounded-full bg-gray-100 text-gray-600 flex items-center justify-center font-bold text-sm tracking-wide">
-                                RS
+                            <div class="w-10 h-10 rounded-full bg-pink-50 text-pink-600 flex items-center justify-center font-bold text-sm tracking-wide">
+                                SA
                             </div>
                             <div>
-                                <p class="font-semibold text-gray-900 text-[14px]">Robert Smith</p>
-                                <p class="text-[12px] text-gray-400 mt-0.5">r.smith@academy.edu</p>
+                                <p class="font-semibold text-gray-900 text-[14px]">Ustdzh. Siti Aisyah</p>
+                                <p class="text-[12px] text-gray-400 mt-0.5">s.aisyah@madrasah.sch.id</p>
                             </div>
                         </td>
                         <td class="px-6 py-5">
-                            <p class="text-[13px] text-gray-700 font-medium font-mono">TCH-</p>
-                            <p class="text-[13px] text-gray-700 font-medium font-mono mt-0.5">2023-042</p>
+                            <p class="text-[13px] text-gray-700 font-medium">Bandung,</p>
+                            <p class="text-[12px] text-gray-500 mt-0.5">24 Ags 1990</p>
                         </td>
                         <td class="px-6 py-5">
-                            <span class="bg-gray-100 text-gray-600 text-[10px] font-bold px-2 py-1 rounded-sm uppercase tracking-wider">HUMANITIES</span>
+                            <p class="text-[13px] text-gray-700 truncate max-w-[150px]" title="Perum. Cibiru Blok B2, Bandung">Perum. Cibiru Blok B2</p>
                         </td>
                         <td class="px-6 py-5">
-                            <div class="flex flex-wrap gap-1.5">
-                                <span class="bg-[#f0fbf7] text-[#1c7b5b] text-[10px] font-bold px-2 py-1 rounded-sm border border-[#1c7b5b]/10">Dell XPS 15</span>
-                                <span class="bg-[#f0fbf7] text-[#1c7b5b] text-[10px] font-bold px-2 py-1 rounded-sm border border-[#1c7b5b]/10">Projector-B4</span>
-                            </div>
+                            <span class="bg-pink-50 text-pink-600 text-[11px] font-bold px-2.5 py-1 rounded-sm">P</span>
                         </td>
                         <td class="px-6 py-5">
-                            <div class="inline-flex items-center gap-1.5 bg-yellow-50 px-2.5 py-1 rounded-full border border-yellow-100">
-                                <div class="w-1.5 h-1.5 rounded-full bg-yellow-500"></div>
-                                <span class="text-yellow-700 text-[11px] font-bold">Audit Tertunda</span>
-                            </div>
+                            <span class="text-[13px] text-gray-700 font-medium">2015</span>
+                        </td>
+                        <td class="px-6 py-5">
+                            <span class="text-[13px] text-gray-700">S1 Bahasa Arab</span>
+                        </td>
+                        <td class="px-6 py-5">
+                            <p class="text-[13px] text-gray-700 font-medium font-mono">3273152408900003</p>
                         </td>
                         <td class="px-6 py-5 text-right">
                             <div class="flex items-center justify-end gap-3">
@@ -150,84 +151,31 @@
                     <tr class="hover:bg-gray-50 transition-colors">
                         <td class="px-6 py-5 flex items-center gap-4">
                             <div class="w-10 h-10 rounded-full bg-[#e8f5f1] text-[#1c7b5b] flex items-center justify-center font-bold text-sm tracking-wide">
-                                AL
+                                ML
                             </div>
                             <div>
-                                <p class="font-semibold text-gray-900 text-[14px]">Alice Lundberg</p>
-                                <p class="text-[12px] text-gray-400 mt-0.5">a.lundberg@academy.edu</p>
+                                <p class="font-semibold text-gray-900 text-[14px]">Ust. Malik Ibrahim</p>
+                                <p class="text-[12px] text-gray-400 mt-0.5">m.ibrahim@madrasah.sch.id</p>
                             </div>
                         </td>
                         <td class="px-6 py-5">
-                            <p class="text-[13px] text-gray-700 font-medium font-mono">TCH-</p>
-                            <p class="text-[13px] text-gray-700 font-medium font-mono mt-0.5">2023-018</p>
+                            <p class="text-[13px] text-gray-700 font-medium">Surabaya,</p>
+                            <p class="text-[12px] text-gray-500 mt-0.5">03 Nov 1982</p>
                         </td>
                         <td class="px-6 py-5">
-                            <span class="bg-gray-100 text-gray-600 text-[10px] font-bold px-2 py-1 rounded-sm uppercase tracking-wider">PHYSICS LAB</span>
+                            <p class="text-[13px] text-gray-700 truncate max-w-[150px]" title="Jl. Diponegoro No. 8, Sby">Jl. Diponegoro No. 8</p>
                         </td>
                         <td class="px-6 py-5">
-                            <div class="flex flex-col gap-1.5">
-                                <div class="flex gap-1.5">
-                                    <span class="bg-[#f0fbf7] text-[#1c7b5b] text-[10px] font-bold px-2 py-1 rounded-sm border border-[#1c7b5b]/10">ThinkPad X1</span>
-                                </div>
-                                <div class="flex gap-1.5">
-                                    <span class="bg-[#f0fbf7] text-[#1c7b5b] text-[10px] font-bold px-2 py-1 rounded-sm border border-[#1c7b5b]/10">Oscilloscope Gen 2</span>
-                                </div>
-                                <div class="flex gap-1.5">
-                                    <span class="bg-gray-50 text-gray-500 text-[10px] font-bold px-2 py-1 rounded-sm border border-gray-200">+5 lagi</span>
-                                </div>
-                            </div>
+                            <span class="bg-blue-50 text-blue-600 text-[11px] font-bold px-2.5 py-1 rounded-sm">L</span>
                         </td>
                         <td class="px-6 py-5">
-                            <div class="inline-flex items-center gap-1.5 bg-[#f0fbf7] px-2.5 py-1 rounded-full border border-green-100">
-                                <div class="w-1.5 h-1.5 rounded-full bg-[#1c7b5b]"></div>
-                                <span class="text-[#1c7b5b] text-[11px] font-bold">Terverifikasi</span>
-                            </div>
-                        </td>
-                        <td class="px-6 py-5 text-right">
-                            <div class="flex items-center justify-end gap-3">
-                                <button class="text-slate-400 hover:text-[#1c7b5b] transition-colors">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
-                                </button>
-                                <button class="text-slate-400 hover:text-red-500 transition-colors">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-
-                    <!-- Row 4 -->
-                    <tr class="hover:bg-gray-50 transition-colors border-b border-gray-100">
-                        <td class="px-6 py-5 flex items-center gap-4">
-                            <div class="w-10 h-10 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center font-bold text-sm tracking-wide">
-                                MK
-                            </div>
-                            <div>
-                                <p class="font-semibold text-gray-900 text-[14px]">Michael Kovic</p>
-                                <p class="text-[12px] text-gray-400 mt-0.5">m.kovic@academy.edu</p>
-                            </div>
+                            <span class="text-[13px] text-gray-700 font-medium">2008</span>
                         </td>
                         <td class="px-6 py-5">
-                            <p class="text-[13px] text-gray-700 font-medium font-mono">TCH-</p>
-                            <p class="text-[13px] text-gray-700 font-medium font-mono mt-0.5">2022-105</p>
+                            <span class="text-[13px] text-gray-700">S2 Tarbiyah</span>
                         </td>
                         <td class="px-6 py-5">
-                            <span class="bg-gray-100 text-gray-600 text-[10px] font-bold px-2 py-1 rounded-sm uppercase tracking-wider">PHYSICAL ED</span>
-                        </td>
-                        <td class="px-6 py-5">
-                            <div class="flex flex-col gap-1.5">
-                                <div class="flex gap-1.5">
-                                    <span class="bg-[#f0fbf7] text-[#1c7b5b] text-[10px] font-bold px-2 py-1 rounded-sm border border-[#1c7b5b]/10">Rugged iPad</span>
-                                </div>
-                                <div class="flex gap-1.5">
-                                    <span class="bg-[#f0fbf7] text-[#1c7b5b] text-[10px] font-bold px-2 py-1 rounded-sm border border-[#1c7b5b]/10">Coach Set Alpha</span>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-6 py-5">
-                            <div class="inline-flex items-center gap-1.5 bg-red-50 px-2.5 py-1 rounded-full border border-red-100">
-                                <div class="w-1.5 h-1.5 rounded-full bg-red-500"></div>
-                                <span class="text-red-600 text-[11px] font-bold">Item Hilang</span>
-                            </div>
+                            <p class="text-[13px] text-gray-700 font-medium font-mono">3578030311820005</p>
                         </td>
                         <td class="px-6 py-5 text-right">
                             <div class="flex items-center justify-end gap-3">
