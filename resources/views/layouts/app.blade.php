@@ -10,6 +10,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
     <style>
         body { font-family: 'Inter', sans-serif; }
     </style>
@@ -55,6 +59,12 @@
                     <a href="{{ route('murid') }}" class="flex items-center gap-4 px-8 py-2.5 transition-colors {{ request()->routeIs('murid') ? 'bg-[#f0fbf7] text-[#1c7b5b] font-bold border-r-[3px] border-[#1c7b5b]' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 font-medium' }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="{{ request()->routeIs('murid') ? '' : 'text-slate-500' }}"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                         Murid
+                    </a>
+
+                    <!-- Kelas -->
+                    <a href="{{ route('kelas') }}" class="flex items-center gap-4 px-8 py-2.5 transition-colors {{ request()->routeIs('kelas') ? 'bg-[#f0fbf7] text-[#1c7b5b] font-bold border-r-[3px] border-[#1c7b5b]' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 font-medium' }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="{{ request()->routeIs('kelas') ? '' : 'text-slate-500' }}"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+                        Kelas
                     </a>
 
                     <!-- Pengurus -->
