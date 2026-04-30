@@ -30,6 +30,10 @@ Route::get('/murid', function () {
     return view('murid');
 })->name('murid');
 
+Route::get('/kelas', function () {
+    return view('kelas');
+})->name('kelas');
+
 Route::get('/inventaris', function () {
     return view('inventaris');
 })->name('inventaris');
