@@ -18,7 +18,7 @@ class UserController extends Controller
         // Ambil data lembaga buat pilihan dropdown di form tambah user
         $lembagas = Lembaga::all();
 
-        return view('admin.manajemen_user', compact('users', 'lembagas'));
+        return view('admin.user_management', compact('users', 'lembagas'));
     }
 
     // 2. Proses Simpan User Baru
@@ -30,7 +30,6 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6',
             'role' => 'required|in:yayasan,lembaga',
-            // required_if artinya: wajib diisi kalau rolenya 'lembaga'
             'lembaga_id' => 'required_if:role,lembaga'
         ]);
 
@@ -40,7 +39,6 @@ class UserController extends Controller
             'email' => $request->email,
             'password' => bcrypt($request->password),
             'role' => $request->role,
-            // Kalau dia yayasan, id_lembaganya dibikin kosong (null). Kalau lembaga, sesuai pilihan.
             'lembaga_id' => $request->role === 'yayasan' ? null : $request->lembaga_id,
         ]);
 

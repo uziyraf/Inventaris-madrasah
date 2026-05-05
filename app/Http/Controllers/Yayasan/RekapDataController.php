@@ -7,21 +7,34 @@ use App\Models\Guru;
 use App\Models\Santri;
 use App\Models\Inventaris;
 use App\Models\Pengurus;
-// Pastikan model-model di atas udah lu punya
+use App\Models\Lembaga; // Pastikan Model Lembaga dipanggil
 use Illuminate\Http\Request;
 
 class RekapDataController extends Controller
 {
-    // Nampilin Dasbor Yayasan (Rekap Total)
+    // Nampilin Dasbor Yayasan (Rekap Total Semua Lembaga)
     public function dashboard()
     {
-        return view('admin.dashboard'); // Lu bikin file resources/views/admin/dashboard.blade.php
+        // Hitung total keseluruhan data dari database
+        $totalLembaga = Lembaga::count();
+        $totalGuru = Guru::count();
+        $totalMurid = Santri::count();
+        $totalPengurus = Pengurus::count();
+        $totalInventaris = Inventaris::count();
+
+        // Kirim semua variabel total ke halaman dasbor
+        return view('admin.dashboard', compact(
+            'totalLembaga',
+            'totalGuru',
+            'totalMurid',
+            'totalPengurus',
+            'totalInventaris'
+        ));
     }
 
     // Nampilin Semua Guru
     public function guru()
     {
-        // Ambil semua guru dari semua lembaga (kalau ada relasi ke lembaga, pakai with('lembaga'))
         $gurus = Guru::latest()->get();
         return view('guru', compact('gurus'));
     }
@@ -36,7 +49,6 @@ class RekapDataController extends Controller
     // Nampilin Rincian Kelas Global
     public function kelas()
     {
-        // Hitung total murid per kelas dari SEMUA lembaga
         $kelasData = Santri::selectRaw('kelas, count(*) as total')
             ->groupBy('kelas')
             ->get();
