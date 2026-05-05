@@ -31,10 +31,12 @@ class KelasController extends Controller
                 return [
                     'name' => $s->nama_santri,
                     'nis' => $s->no_induk,
+                    // Ubah 'Laki-laki' jadi 'L', 'Perempuan' jadi 'P' buat badge warna
                     'gender' => $s->jenis_kelamin == 'Laki-laki' ? 'L' : 'P'
                 ];
             })->values()->toArray();
 
+            // Masukin data per kelas ke array
             $kelasData[] = [
                 'nama_kelas' => $nama_kelas,
                 'total' => $students->count(),
@@ -44,6 +46,7 @@ class KelasController extends Controller
             ];
         }
 
+        // Urutkan abjad nama kelas (misal 7A dulu, baru 7B) biar rapi
         $kelasData = collect($kelasData)->sortBy('nama_kelas')->values()->toArray();
 
         return view('kelas', compact('totalSiswa', 'totalLaki', 'totalPerempuan', 'kelasData'));

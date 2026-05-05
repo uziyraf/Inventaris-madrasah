@@ -44,6 +44,7 @@ Route::middleware(['auth', 'role:lembaga'])->group(function () {
     Route::put('/pengurus/{id}', [PengurusController::class, 'update'])->name('pengurus.update');
     Route::delete('/pengurus/{id}', [PengurusController::class, 'destroy'])->name('pengurus.destroy');
 
+    Route::get('/data-kelas', [KelasController::class, 'index'])->name('kelas');
 
     Route::get('/murid', [SantriController::class, 'index'])->name('murid');
     Route::post('/murid', [SantriController::class, 'store'])->name('murid.store');
