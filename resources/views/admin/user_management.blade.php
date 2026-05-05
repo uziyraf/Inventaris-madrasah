@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
     <div x-data="{ modalOpen: false, selectedRole: 'lembaga' }">
@@ -90,7 +90,8 @@
                         </svg></button>
                 </div>
 
-                <form action="{{ route('yayasan.users.store') }}" method="POST" class="p-6 space-y-4">
+                <!-- UPDATE ACTION KE route('admin.users.store') -->
+                <form action="{{ route('admin.users.store') }}" method="POST" class="p-6 space-y-4">
                     @csrf
                     <div>
                         <label class="block text-[11px] font-bold text-gray-500 uppercase mb-2">Nama Pengguna</label>
