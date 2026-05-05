@@ -1,7 +1,6 @@
 @extends(isset($role) && $role === 'admin' ? 'layouts.admin' : 'layouts.app')
 
 @section('content')
-    <!-- Page Header -->
     <div class="flex justify-between items-start mb-8">
         <div>
             <h2 class="text-[28px] font-bold text-[#1e293b] mb-1.5 tracking-tight">Data Pengurus</h2>
@@ -12,7 +11,6 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 Ekspor CSV
             </button>
-            @if(isset($role) && $role === 'admin')
             <button class="bg-[#1c7b5b] hover:bg-[#155d44] text-white px-5 py-2.5 rounded-sm font-semibold text-[13px] flex items-center gap-2 shadow-sm transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                 Pengurus Baru
@@ -21,23 +19,25 @@
         </div>
     </div>
 
-    <!-- Stats Cards -->
+    @if(session('success'))
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-sm relative mb-6">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-        <!-- Stat 1 -->
         <div class="bg-white p-6 rounded-sm shadow-sm border border-gray-100 flex flex-col justify-between h-36">
             <div class="flex justify-between items-start">
                 <div class="w-10 h-10 rounded-full bg-[#f0fbf7] flex items-center justify-center text-[#1c7b5b]">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 15v-1a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1"/><circle cx="10" cy="9" r="2"/><path d="M16 9h2"/><path d="M16 13h2"/></svg>
                 </div>
-                <span class="bg-[#e2f5ec] text-[#1c7b5b] text-[11px] font-bold px-2 py-1 rounded-sm">+2 bulan ini</span>
             </div>
             <div>
                 <p class="text-[12px] font-medium text-gray-500 mb-1">Total Staf</p>
-                <h3 class="text-[32px] font-bold text-[#1e293b] leading-none">42</h3>
+                <h3 class="text-[32px] font-bold text-[#1e293b] leading-none">{{ $penguruses->total() }}</h3>
             </div>
         </div>
 
-        <!-- Stat 2 -->
         <div class="bg-white p-6 rounded-sm shadow-sm border border-gray-100 flex flex-col justify-between h-36">
             <div class="flex justify-between items-start">
                 <div class="w-10 h-10 rounded-full bg-[#f0fbf7] flex items-center justify-center text-[#1c7b5b]">
@@ -45,12 +45,11 @@
                 </div>
             </div>
             <div>
-                <p class="text-[12px] font-medium text-gray-500 mb-1">Manajer Aktif</p>
-                <h3 class="text-[32px] font-bold text-[#1e293b] leading-none">12</h3>
+                <p class="text-[12px] font-medium text-gray-500 mb-1">Pengurus Aktif</p>
+                <h3 class="text-[32px] font-bold text-[#1e293b] leading-none">{{ $penguruses->where('status', 'Aktif')->count() }}</h3>
             </div>
         </div>
 
-        <!-- Stat 3 (Spans 2 cols) -->
         <div class="md:col-span-2 bg-white p-6 rounded-sm shadow-sm border border-gray-100 flex flex-col justify-between h-36">
             <div class="flex justify-between items-start mb-4">
                 <p class="text-[13px] font-medium text-gray-600">Status Sistem</p>
@@ -60,7 +59,6 @@
                 </div>
             </div>
             <div class="flex items-end justify-between h-12 mb-3 gap-1">
-                <!-- Mini Bar Chart -->
                 <div class="w-full bg-[#e2e8f0] h-6 rounded-sm"></div>
                 <div class="w-full bg-[#94d1b8] h-8 rounded-sm"></div>
                 <div class="w-full bg-[#bce3d2] h-4 rounded-sm"></div>
@@ -76,9 +74,7 @@
         </div>
     </div>
 
-    <!-- Table Wrapper -->
     <div class="bg-white rounded-sm shadow-sm border border-gray-200 mb-8">
-        <!-- Table Toolbar -->
         <div class="px-6 py-4 border-b border-gray-100 flex flex-wrap justify-between items-center gap-4">
             <div class="flex items-center gap-4">
                 <h3 class="text-[16px] font-bold text-[#1e293b]">Daftar Pengurus</h3>
@@ -99,13 +95,13 @@
             </div>
         </div>
 
-        <!-- Table -->
         <div class="overflow-x-auto">
             <table class="w-full text-left text-sm text-gray-600">
                 <thead class="text-[11px] text-gray-500 font-bold tracking-widest uppercase border-b border-gray-100">
                     <tr>
                         <th scope="col" class="px-6 py-5">JABATAN</th>
                         <th scope="col" class="px-6 py-5">NAMA</th>
+                        <th scope="col" class="px-6 py-5">STATUS</th>
                         <th scope="col" class="px-6 py-5">ALAMAT</th>
                         <th scope="col" class="px-6 py-5">KETERANGAN</th>
                         <th scope="col" class="px-6 py-5 text-right">AKSI</th>
@@ -131,19 +127,12 @@
                         </td>
                         <td class="px-6 py-4 text-right">
                             <div class="flex items-center justify-end gap-3">
-                                @if(isset($role) && $role === 'admin')
                                 <button class="text-slate-400 hover:text-[#1c7b5b] transition-colors">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
                                 </button>
                                 <button class="text-slate-400 hover:text-red-500 transition-colors">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
                                 </button>
-                                @else
-                                <button class="text-slate-400 hover:text-[#1c7b5b] transition-colors flex items-center gap-1.5 text-[12px] font-bold">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
-                                    Lihat Detail
-                                </button>
-                                @endif
                             </div>
                         </td>
                     </tr>
@@ -238,28 +227,14 @@
             </table>
         </div>
         
-        <!-- Pagination -->
         <div class="px-6 py-5 flex items-center justify-between border-t border-gray-100">
-            <p class="text-[13px] text-gray-500 font-medium">Menampilkan <span class="font-bold text-gray-800">1</span> sampai <span class="font-bold text-gray-800">4</span> dari <span class="font-bold text-gray-800">42</span> hasil</p>
-            <div class="flex items-center gap-1">
-                <button class="w-8 h-8 flex items-center justify-center rounded text-gray-400 hover:text-gray-600 transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-                </button>
-                <button class="w-8 h-8 flex items-center justify-center rounded bg-[#1c7b5b] text-white font-bold text-[13px]">1</button>
-                <button class="w-8 h-8 flex items-center justify-center rounded text-[#1e293b] font-bold text-[13px] hover:bg-gray-50 transition-colors">2</button>
-                <button class="w-8 h-8 flex items-center justify-center rounded text-[#1e293b] font-bold text-[13px] hover:bg-gray-50 transition-colors">3</button>
-                <span class="w-8 h-8 flex items-center justify-center text-gray-400 font-bold text-[13px]">...</span>
-                <button class="w-8 h-8 flex items-center justify-center rounded text-[#1e293b] font-bold text-[13px] hover:bg-gray-50 transition-colors">11</button>
-                <button class="w-8 h-8 flex items-center justify-center rounded text-gray-600 hover:bg-gray-50 transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-                </button>
+            <div class="w-full">
+                {{ $penguruses->links() }}
             </div>
         </div>
     </div>
 
-    <!-- Bottom Section: Info & Logs -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pb-8">
-        <!-- Access Control Policy -->
         <div class="bg-white rounded-sm shadow-sm border border-gray-100 p-6">
             <div class="flex items-center gap-3 mb-4">
                 <div class="text-[#1c7b5b]">
@@ -272,7 +247,6 @@
             </p>
         </div>
 
-        <!-- Activity Log -->
         <div class="bg-white rounded-sm shadow-sm border border-gray-100 p-6">
             <div class="flex items-center gap-3 mb-5">
                 <div class="text-[#1c7b5b]">
@@ -281,22 +255,127 @@
                 <h3 class="text-[15px] font-bold text-[#1e293b]">Log Aktivitas Terbaru</h3>
             </div>
             <div class="space-y-4">
-                <!-- Log 1 -->
                 <div class="flex justify-between items-start border-b border-gray-50 pb-4">
-                    <p class="text-[12px] text-gray-600 font-medium">Admin Alpha memperbarui peran "Maya Indah"</p>
-                    <span class="text-[11px] text-gray-400 whitespace-nowrap">10m yang lalu</span>
-                </div>
-                <!-- Log 2 -->
-                <div class="flex justify-between items-start border-b border-gray-50 pb-4">
-                    <p class="text-[12px] text-gray-600 font-medium">Akun baru "Budi Santoso" dibuat</p>
-                    <span class="text-[11px] text-gray-400 whitespace-nowrap">4j yang lalu</span>
-                </div>
-                <!-- Log 3 -->
-                <div class="flex justify-between items-start">
-                    <p class="text-[12px] text-gray-600 font-medium">Laporan audit sistem dibuat</p>
-                    <span class="text-[11px] text-gray-400 whitespace-nowrap">Kemarin</span>
+                    <p class="text-[12px] text-gray-600 font-medium">Sistem siap digunakan</p>
+                    <span class="text-[11px] text-gray-400 whitespace-nowrap">Baru saja</span>
                 </div>
             </div>
         </div>
     </div>
+
+    <div id="modalTambah" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-sm w-full max-w-lg p-8 shadow-xl">
+            <h3 class="text-lg font-bold mb-6 text-gray-800">Tambah Data Pengurus</h3>
+            <form action="{{ route('pengurus.store') }}" method="POST" class="flex flex-col gap-4">
+                @csrf
+                <div>
+                    <label class="block text-[11px] font-bold text-gray-500 uppercase mb-2">Nama Pengurus</label>
+                    <input type="text" name="nama" required class="w-full border border-gray-200 rounded-sm px-3 py-2 text-sm focus:outline-none focus:border-[#1c7b5b]">
+                </div>
+                <div>
+                    <label class="block text-[11px] font-bold text-gray-500 uppercase mb-2">Jabatan</label>
+                    <input type="text" name="jabatan" required placeholder="Contoh: Kepala Tata Usaha" class="w-full border border-gray-200 rounded-sm px-3 py-2 text-sm focus:outline-none focus:border-[#1c7b5b]">
+                </div>
+                <div>
+                    <label class="block text-[11px] font-bold text-gray-500 uppercase mb-2">Status</label>
+                    <select name="status" required class="w-full border border-gray-200 rounded-sm px-3 py-2 text-sm focus:outline-none focus:border-[#1c7b5b]">
+                        <option value="Aktif">Aktif</option>
+                        <option value="Tidak Aktif">Tidak Aktif</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-[11px] font-bold text-gray-500 uppercase mb-2">Alamat Lengkap</label>
+                    <textarea name="alamat" rows="2" required class="w-full border border-gray-200 rounded-sm px-3 py-2 text-sm focus:outline-none focus:border-[#1c7b5b]"></textarea>
+                </div>
+                <div>
+                    <label class="block text-[11px] font-bold text-gray-500 uppercase mb-2">Keterangan (Opsional)</label>
+                    <textarea name="keterangan" rows="2" class="w-full border border-gray-200 rounded-sm px-3 py-2 text-sm focus:outline-none focus:border-[#1c7b5b]"></textarea>
+                </div>
+                <div class="flex justify-end gap-3 mt-4">
+                    <button type="button" onclick="toggleModal('modalTambah')" class="px-4 py-2 text-sm font-bold text-gray-400 uppercase hover:text-gray-600 transition-colors">Batal</button>
+                    <button type="submit" class="bg-[#1c7b5b] text-white px-6 py-2 rounded-sm font-bold text-sm uppercase hover:bg-[#155d44] transition-colors shadow-sm">Simpan Data</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="modalEdit" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-sm w-full max-w-lg p-8 shadow-xl">
+            <h3 class="text-lg font-bold mb-6 text-gray-800">Edit Data Pengurus</h3>
+            <form id="formEdit" method="POST" class="flex flex-col gap-4">
+                @csrf
+                @method('PUT')
+                <div>
+                    <label class="block text-[11px] font-bold text-gray-500 uppercase mb-2">Nama Pengurus</label>
+                    <input type="text" name="nama" id="edit_nama" required class="w-full border border-gray-200 rounded-sm px-3 py-2 text-sm focus:outline-none focus:border-[#1c7b5b]">
+                </div>
+                <div>
+                    <label class="block text-[11px] font-bold text-gray-500 uppercase mb-2">Jabatan</label>
+                    <input type="text" name="jabatan" id="edit_jabatan" required class="w-full border border-gray-200 rounded-sm px-3 py-2 text-sm focus:outline-none focus:border-[#1c7b5b]">
+                </div>
+                <div>
+                    <label class="block text-[11px] font-bold text-gray-500 uppercase mb-2">Status</label>
+                    <select name="status" id="edit_status" required class="w-full border border-gray-200 rounded-sm px-3 py-2 text-sm focus:outline-none focus:border-[#1c7b5b]">
+                        <option value="Aktif">Aktif</option>
+                        <option value="Tidak Aktif">Tidak Aktif</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-[11px] font-bold text-gray-500 uppercase mb-2">Alamat Lengkap</label>
+                    <textarea name="alamat" id="edit_alamat" rows="2" required class="w-full border border-gray-200 rounded-sm px-3 py-2 text-sm focus:outline-none focus:border-[#1c7b5b]"></textarea>
+                </div>
+                <div>
+                    <label class="block text-[11px] font-bold text-gray-500 uppercase mb-2">Keterangan (Opsional)</label>
+                    <textarea name="keterangan" id="edit_keterangan" rows="2" class="w-full border border-gray-200 rounded-sm px-3 py-2 text-sm focus:outline-none focus:border-[#1c7b5b]"></textarea>
+                </div>
+                <div class="flex justify-end gap-3 mt-4">
+                    <button type="button" onclick="toggleModal('modalEdit')" class="px-4 py-2 text-sm font-bold text-gray-400 uppercase hover:text-gray-600 transition-colors">Batal</button>
+                    <button type="submit" class="bg-[#1c7b5b] text-white px-6 py-2 rounded-sm font-bold text-sm uppercase hover:bg-[#155d44] transition-colors shadow-sm">Update Data</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="modalHapus" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
+        <div class="bg-white p-8 rounded-sm max-w-sm w-full text-center shadow-xl">
+            <div class="text-red-500 mb-4 flex justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18" /><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" /><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" /><line x1="10" y1="11" x2="10" y2="17" /><line x1="14" y1="11" x2="14" y2="17" /></svg>
+            </div>
+            <h3 class="font-bold text-lg mb-2 text-gray-800">Hapus Data Pengurus?</h3>
+            <p class="text-gray-500 text-sm mb-6">Data ini akan dihapus secara permanen dari sistem.</p>
+            <form id="formHapus" method="POST" class="flex justify-center gap-3">
+                @csrf
+                @method('DELETE')
+                <button type="button" onclick="toggleModal('modalHapus')" class="px-5 py-2 font-bold text-gray-400 uppercase text-[13px] hover:text-gray-600 transition-colors">Batal</button>
+                <button type="submit" class="bg-red-500 text-white px-6 py-2 rounded-sm font-bold uppercase text-[13px] hover:bg-red-600 transition-colors shadow-sm">Ya, Hapus</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function toggleModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.toggle('hidden');
+            modal.classList.toggle('flex');
+        }
+
+        function editPengurus(data) {
+            const form = document.getElementById('formEdit');
+            form.action = `/pengurus/${data.id}`;
+            
+            document.getElementById('edit_nama').value = data.nama;
+            document.getElementById('edit_jabatan').value = data.jabatan;
+            document.getElementById('edit_status').value = data.status;
+            document.getElementById('edit_alamat').value = data.alamat;
+            document.getElementById('edit_keterangan').value = data.keterangan || '';
+            
+            toggleModal('modalEdit');
+        }
+
+        function konfirmasiHapus(id) {
+            const form = document.getElementById('formHapus');
+            form.action = `/pengurus/${id}`;
+            toggleModal('modalHapus');
+        }
+    </script>
 @endsection
