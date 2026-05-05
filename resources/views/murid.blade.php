@@ -142,6 +142,7 @@
                         </th>
                         <th scope="col" class="px-6 py-5">NAMA SANTRI</th>
                         <th scope="col" class="px-6 py-5">TTL</th>
+                        <th scope="col" class="px-6 py-5">JENIS KELAMIN</th>
                         <th scope="col" class="px-6 py-5">ALAMAT</th>
                         <th scope="col" class="px-6 py-5">NO. INDUK</th>
                         <th scope="col" class="px-6 py-5">KELAS</th>
@@ -175,6 +176,12 @@
                                 <p class="text-[13px] text-gray-700 truncate max-w-[120px]" title="{{ $santri->alamat }}">
                                     {{ $santri->alamat }}
                                 </p>
+                            </td>
+                            <td class="px-6 py-5">
+                                <span
+                                    class="bg-gray-100 text-gray-600 text-[10px] font-bold px-2 py-1 rounded-sm uppercase tracking-wider">
+                                    {{ $santri->jenis_kelamin == 'Laki-laki' ? 'L' : 'P' }}
+                                </span>
                             </td>
                             <td class="px-6 py-5">
                                 <span class="text-[13px] text-gray-700 font-medium font-mono">{{ $santri->no_induk }}</span>
@@ -287,6 +294,15 @@
                     <input type="date" name="tanggal_lahir" required
                         class="w-full border border-gray-200 rounded-sm px-3 py-2 text-sm focus:outline-none focus:border-[#1c7b5b]">
                 </div>
+                <div>
+                    <label class="block text-[11px] font-bold text-gray-500 uppercase mb-2">Jenis Kelamin</label>
+                    <select name="jenis_kelamin" required
+                        class="w-full border border-gray-200 rounded-sm px-3 py-2 text-sm focus:outline-none focus:border-[#1c7b5b]">
+                        <option value="">Pilih...</option>
+                        <option value="Laki-laki">Laki-laki</option>
+                        <option value="Perempuan">Perempuan</option>
+                    </select>
+                </div>
                 <div class="col-span-2">
                     <label class="block text-[11px] font-bold text-gray-500 uppercase mb-2">Alamat Lengkap</label>
                     <textarea name="alamat" rows="2" required
@@ -343,6 +359,14 @@
                     <label class="block text-[11px] font-bold text-gray-500 uppercase mb-2">Tanggal Lahir</label>
                     <input type="date" name="tanggal_lahir" id="edit_tanggal_lahir" required
                         class="w-full border border-gray-200 rounded-sm px-3 py-2 text-sm focus:outline-none focus:border-[#1c7b5b]">
+                </div>
+                <div>
+                    <label class="block text-[11px] font-bold text-gray-500 uppercase mb-2">Jenis Kelamin</label>
+                    <select name="jenis_kelamin" id="edit_jenis_kelamin" required
+                        class="w-full border border-gray-200 rounded-sm px-3 py-2 text-sm focus:outline-none focus:border-[#1c7b5b]">
+                        <option value="Laki-laki">Laki-laki</option>
+                        <option value="Perempuan">Perempuan</option>
+                    </select>
                 </div>
                 <div class="col-span-2">
                     <label class="block text-[11px] font-bold text-gray-500 uppercase mb-2">Alamat Lengkap</label>
@@ -420,6 +444,7 @@
             document.getElementById('edit_nama_santri').value = data.nama_santri;
             document.getElementById('edit_tempat_lahir').value = data.tempat_lahir;
             document.getElementById('edit_tanggal_lahir').value = data.tanggal_lahir;
+            document.getElementById('edit_jenis_kelamin').value = data.jenis_kelamin;
             document.getElementById('edit_alamat').value = data.alamat;
             document.getElementById('edit_kelas').value = data.kelas;
             document.getElementById('edit_nama_orangtua').value = data.nama_orangtua;
