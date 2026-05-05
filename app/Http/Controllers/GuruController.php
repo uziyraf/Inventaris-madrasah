@@ -9,7 +9,7 @@ class GuruController extends Controller
 {
     public function index()
     {
-        $gurus = Guru::latest()->paginate(10);
+        $gurus = Guru::where('lembaga_id', auth()->user()->lembaga_id)->get();
         return view('guru', compact('gurus'));
     }
 
