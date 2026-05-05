@@ -153,22 +153,7 @@
                         Inventaris
                     </a>
 
-                    <!-- Manajemen Pengguna -->
-                    <!-- Manajemen Pengguna -->
-                    <a href="{{ route('yayasan.users') }}"
-                        class="flex items-center gap-4 px-8 py-2.5 transition-colors {{ request()->routeIs('yayasan.users') ? 'bg-[#f0fbf7] text-[#1c7b5b] font-bold border-r-[3px] border-[#1c7b5b]' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 font-medium' }}">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="{{ request()->routeIs('yayasan.users') ? '' : 'text-slate-500' }}">
-                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                            <circle cx="9" cy="7" r="4" />
-                            <line x1="19" y1="8" x2="19" y2="14" />
-                            <line x1="22" y1="11" x2="16" y2="11" />
-                        </svg>
-                        <span class="flex flex-col leading-tight">
-                            Manajemen<br>Pengguna
-                        </span>
-                    </a>
+
                 </nav>
 
                 <!-- Bottom Links -->

@@ -30,16 +30,31 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 // 2. RUTE ADMIN LEMBAGA (User Biasa)
 // ==================================================
 Route::middleware(['auth', 'role:lembaga'])->group(function () {
-    // Rute-rute ini akan pakai layouts/app.blade.php
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/lembaga', [LembagaController::class, 'index'])->name('lembaga');
-    Route::get('/guru', [GuruController::class, 'index'])->name('guru');
-    Route::get('/murid', [SantriController::class, 'index'])->name('murid');
-    Route::get('/kelas', [KelasController::class, 'index'])->name('kelas');
-    Route::get('/inventaris', [InventarisController::class, 'index'])->name('inventaris');
-    Route::get('/pengurus', [PengurusController::class, 'index'])->name('pengurus');
+    Route::put('/lembaga/update', [LembagaController::class, 'update'])->name('lembaga.update');
 
-    // (Kalau ada route untuk post/put/delete data lembaga, taro di dalem group ini juga)
+    Route::get('/guru', [GuruController::class, 'index'])->name('guru');
+    Route::post('/guru', [GuruController::class, 'store'])->name('guru.store');
+    Route::put('/guru/{id}', [GuruController::class, 'update'])->name('guru.update');
+    Route::delete('/guru/{id}', [GuruController::class, 'destroy'])->name('guru.destroy');
+
+    Route::get('/pengurus', [PengurusController::class, 'index'])->name('pengurus');
+    Route::post('/pengurus', [PengurusController::class, 'store'])->name('pengurus.store');
+    Route::put('/pengurus/{id}', [PengurusController::class, 'update'])->name('pengurus.update');
+    Route::delete('/pengurus/{id}', [PengurusController::class, 'destroy'])->name('pengurus.destroy');
+
+
+    Route::get('/murid', [SantriController::class, 'index'])->name('murid');
+    Route::post('/murid', [SantriController::class, 'store'])->name('murid.store');
+    Route::put('/murid/{id}', [SantriController::class, 'update'])->name('murid.update');
+    Route::delete('/murid/{id}', [SantriController::class, 'destroy'])->name('murid.destroy');
+
+    Route::get('/inventaris', [InventarisController::class, 'index'])->name('inventaris');
+    Route::post('/inventaris', [InventarisController::class, 'store'])->name('inventaris.store');
+    Route::put('/inventaris/{id}', [InventarisController::class, 'update'])->name('inventaris.update');
+    Route::delete('/inventaris/{id}', [InventarisController::class, 'destroy'])->name('inventaris.destroy');
+
 });
 
 
@@ -47,9 +62,7 @@ Route::middleware(['auth', 'role:lembaga'])->group(function () {
 // 3. RUTE SUPER ADMIN YAYASAN
 // ==================================================
 Route::middleware(['auth', 'role:yayasan'])->prefix('admin')->name('admin.')->group(function () {
-    // Rute-rute ini akan pakai layouts/admin.blade.php
 
-    // Dasbor
     Route::get('/dashboard', [RekapDataController::class, 'dashboard'])->name('dashboard');
 
     // Manajemen Lembaga & User

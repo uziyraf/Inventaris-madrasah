@@ -9,13 +9,17 @@ class GuruController extends Controller
 {
     public function index()
     {
-        $gurus = Guru::where('lembaga_id', auth()->user()->lembaga_id)->get();
+        $gurus = Guru::where('lembaga_id', auth()->user()->lembaga_id)
+            ->latest()
+            ->paginate(10); // <--- GANTI .get() JADI .paginate(10) DI SINI
+
         return view('guru', compact('gurus'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
+            'lembaga_id' => auth()->user()->lembaga_id,
             'nik' => 'required|unique:gurus',
             'nama_guru' => 'required',
             'tempat_lahir' => 'required',

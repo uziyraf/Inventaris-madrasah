@@ -14,7 +14,7 @@ class AuthController extends Controller
         if (Auth::check()) {
             return Auth::user()->role === 'yayasan'
                 ? redirect()->route('admin.dashboard') // <--- GANTI DI SINI
-                : redirect()->route('admin.dashboard');
+                : redirect()->route('dashboard');
         }
 
         return view('auth.login');
