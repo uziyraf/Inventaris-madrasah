@@ -22,7 +22,15 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',          // <-- Tambahan
+        'lembaga_id',    // <-- Tambahan
     ];
+
+    // Bikin relasi ke Lembaga
+    public function lembaga()
+    {
+        return $this->belongsTo(Lembaga::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.
