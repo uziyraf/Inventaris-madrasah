@@ -35,17 +35,17 @@ class RekapDataController extends Controller
     // Nampilin Semua Guru
     public function guru()
     {
-        $gurus = Guru::latest()->get();
-        return view('guru', compact('gurus'));
+        // Jika mau dipaginasi, ganti get() dengan paginate(10)
+        $gurus = Guru::with('lembaga')->latest()->paginate(10);
+        return view('admin.guru', compact('gurus'));
     }
 
     // Nampilin Semua Murid/Santri
     public function murid()
     {
-        $murids = Santri::latest()->get();
-        return view('murid', compact('murids'));
+        $santris = Santri::with('lembaga')->latest()->paginate(10);
+        return view('admin.murid', compact('santris'));
     }
-
     // Nampilin Rincian Kelas Global
     public function kelas()
     {
@@ -58,14 +58,31 @@ class RekapDataController extends Controller
     // Nampilin Semua Pengurus
     public function pengurus()
     {
-        $pengurus = Pengurus::latest()->get();
-        return view('pengurus', compact('pengurus'));
+        $penguruses = Pengurus::with('lembaga')->latest()->paginate(10);
+        return view('admin.pengurus', compact('penguruses'));
     }
 
     // Nampilin Semua Inventaris
-    public function inventaris()
+    public function inventaris(Request $request)
     {
-        $inventaris = Inventaris::latest()->get();
-        return view('inventaris', compact('inventaris'));
+        // Menggunakan relasi dan logic filter
+        $query = Inventaris::with('lembaga')->latest();
+
+        if ($request->filled('search')) {
+            $query->where('aset', 'like', '%' . $request->search . '%')
+                ->orWhere('keterangan', 'like', '%' . $request->search . '%');
+        }
+
+        if ($request->filled('kategori')) {
+            $query->where('kategori', $request->kategori);
+        }
+
+        if ($request->filled('kondisi')) {
+            $query->where('kondisi', $request->kondisi);
+        }
+
+        $inventaris = $query->paginate(10);
+
+        return view('admin.inventaris', compact('inventaris'));
     }
 }
