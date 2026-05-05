@@ -1,15 +1,15 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
     <div x-data="{ 
-        modalOpen: false, 
-        selectedLembaga: null,
+            modalOpen: false, 
+            selectedLembaga: null,
 
-        openModal(lembaga) {
-            this.selectedLembaga = lembaga;
-            this.modalOpen = true;
-        }
-    }">
+            openModal(lembaga) {
+                this.selectedLembaga = lembaga;
+                this.modalOpen = true;
+            }
+        }">
         <!-- Breadcrumbs -->
         <div class="flex items-center gap-2 text-[10px] font-bold text-gray-500 tracking-widest uppercase mb-4">
             <span class="text-gray-400">YAYASAN</span>
@@ -63,7 +63,8 @@
                         </div>
                         <div>
                             <h3 class="text-[16px] font-bold text-[#1e293b] leading-tight mb-1">
-                                {{ $lembaga->nama_madrasah ?? 'Lembaga Belum Dinamai' }}</h3>
+                                {{ $lembaga->nama_madrasah ?? 'Lembaga Belum Dinamai' }}
+                            </h3>
                             <p class="text-[11px] font-mono text-gray-400">NSM: {{ $lembaga->nsm ?? '-' }}</p>
                         </div>
                     </div>
