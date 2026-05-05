@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends(isset($role) && $role === 'admin' ? 'layouts.admin' : 'layouts.app')
 
 @section('content')
 <div x-data="{ 

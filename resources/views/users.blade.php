@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends(isset($role) && $role === 'admin' ? 'layouts.admin' : 'layouts.app')
 
 @section('content')
     <!-- Page Header -->
@@ -7,7 +7,7 @@
             <h2 class="text-3xl font-bold text-gray-900 mb-2">Akun Pengguna</h2>
             <p class="text-gray-500 text-sm">Kelola tingkat akses sistem dan peran institusional di seluruh departemen.</p>
         </div>
-        <a href="{{ route('users.create') }}" class="bg-[#1c7b5b] hover:bg-[#155d44] text-white px-4 py-2.5 rounded-sm font-medium text-sm flex items-center gap-2 shadow-sm transition-colors">
+        <a href="{{ route('admin.users.create') }}" class="bg-[#1c7b5b] hover:bg-[#155d44] text-white px-4 py-2.5 rounded-sm font-medium text-sm flex items-center gap-2 shadow-sm transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
             Buat Pengguna Baru
         </a>

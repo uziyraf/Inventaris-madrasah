@@ -38,42 +38,54 @@
             <div class="flex-1 overflow-hidden py-2 flex flex-col justify-between">
                 <nav>
                     <!-- Dasbor -->
-                    <a href="{{ route('dashboard') }}" class="flex items-center gap-4 px-8 py-2.5 transition-colors {{ request()->routeIs('dashboard') ? 'bg-[#f0fbf7] text-[#1c7b5b] font-bold border-r-[3px] border-[#1c7b5b]' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 font-medium' }}">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="{{ request()->routeIs('dashboard') ? '' : 'text-slate-500' }}"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
+                    <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-4 px-8 py-2.5 transition-colors {{ request()->routeIs('admin.dashboard') ? 'bg-[#f0fbf7] text-[#1c7b5b] font-bold border-r-[3px] border-[#1c7b5b]' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 font-medium' }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="{{ request()->routeIs('admin.dashboard') ? '' : 'text-slate-500' }}"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
                         Dasbor
                     </a>
                     
+                    <!-- Lembaga -->
+                    <a href="{{ route('admin.lembaga') }}" class="flex items-center gap-4 px-8 py-2.5 transition-colors {{ request()->routeIs('admin.lembaga') ? 'bg-[#f0fbf7] text-[#1c7b5b] font-bold border-r-[3px] border-[#1c7b5b]' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 font-medium' }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="{{ request()->routeIs('admin.lembaga') ? '' : 'text-slate-500' }}"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg>
+                        Lembaga
+                    </a>
 
                     <!-- Guru -->
-                    <a href="{{ route('guru') }}" class="flex items-center gap-4 px-8 py-2.5 transition-colors {{ request()->routeIs('guru') ? 'bg-[#f0fbf7] text-[#1c7b5b] font-bold border-r-[3px] border-[#1c7b5b]' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 font-medium' }}">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="{{ request()->routeIs('guru') ? '' : 'text-slate-500' }}"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                    <a href="{{ route('admin.guru') }}" class="flex items-center gap-4 px-8 py-2.5 transition-colors {{ request()->routeIs('admin.guru') ? 'bg-[#f0fbf7] text-[#1c7b5b] font-bold border-r-[3px] border-[#1c7b5b]' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 font-medium' }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="{{ request()->routeIs('admin.guru') ? '' : 'text-slate-500' }}"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
                         Guru
                     </a>
 
                     <!-- Murid -->
-                    <a href="{{ route('murid') }}" class="flex items-center gap-4 px-8 py-2.5 transition-colors {{ request()->routeIs('murid') ? 'bg-[#f0fbf7] text-[#1c7b5b] font-bold border-r-[3px] border-[#1c7b5b]' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 font-medium' }}">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="{{ request()->routeIs('murid') ? '' : 'text-slate-500' }}"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    <a href="{{ route('admin.murid') }}" class="flex items-center gap-4 px-8 py-2.5 transition-colors {{ request()->routeIs('admin.murid') ? 'bg-[#f0fbf7] text-[#1c7b5b] font-bold border-r-[3px] border-[#1c7b5b]' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 font-medium' }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="{{ request()->routeIs('admin.murid') ? '' : 'text-slate-500' }}"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                         Murid
                     </a>
 
                     <!-- Kelas -->
-                    <a href="{{ route('kelas') }}" class="flex items-center gap-4 px-8 py-2.5 transition-colors {{ request()->routeIs('kelas') ? 'bg-[#f0fbf7] text-[#1c7b5b] font-bold border-r-[3px] border-[#1c7b5b]' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 font-medium' }}">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="{{ request()->routeIs('kelas') ? '' : 'text-slate-500' }}"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+                    <a href="{{ route('admin.kelas') }}" class="flex items-center gap-4 px-8 py-2.5 transition-colors {{ request()->routeIs('admin.kelas') ? 'bg-[#f0fbf7] text-[#1c7b5b] font-bold border-r-[3px] border-[#1c7b5b]' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 font-medium' }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="{{ request()->routeIs('admin.kelas') ? '' : 'text-slate-500' }}"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
                         Kelas
                     </a>
 
                     <!-- Pengurus -->
-                    <a href="{{ route('pengurus') }}" class="flex items-center gap-4 px-8 py-2.5 transition-colors {{ request()->routeIs('pengurus') ? 'bg-[#f0fbf7] text-[#1c7b5b] font-bold border-r-[3px] border-[#1c7b5b]' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 font-medium' }}">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="{{ request()->routeIs('pengurus') ? '' : 'text-slate-500' }}"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    <a href="{{ route('admin.pengurus') }}" class="flex items-center gap-4 px-8 py-2.5 transition-colors {{ request()->routeIs('admin.pengurus') ? 'bg-[#f0fbf7] text-[#1c7b5b] font-bold border-r-[3px] border-[#1c7b5b]' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 font-medium' }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="{{ request()->routeIs('admin.pengurus') ? '' : 'text-slate-500' }}"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                         Pengurus
                     </a>
 
                     <!-- Inventaris -->
-                    <a href="{{ route('inventaris') }}" class="flex items-center gap-4 px-8 py-2.5 transition-colors {{ request()->routeIs('inventaris') ? 'bg-[#f0fbf7] text-[#1c7b5b] font-bold border-r-[3px] border-[#1c7b5b]' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 font-medium' }}">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="{{ request()->routeIs('inventaris') ? '' : 'text-slate-500' }}"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                    <a href="{{ route('admin.inventaris') }}" class="flex items-center gap-4 px-8 py-2.5 transition-colors {{ request()->routeIs('admin.inventaris') ? 'bg-[#f0fbf7] text-[#1c7b5b] font-bold border-r-[3px] border-[#1c7b5b]' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 font-medium' }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="{{ request()->routeIs('admin.inventaris') ? '' : 'text-slate-500' }}"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
                         Inventaris
                     </a>
 
+                    <!-- Manajemen Pengguna -->
+                    <a href="{{ route('admin.users') }}" class="flex items-center gap-4 px-8 py-2.5 transition-colors {{ request()->routeIs('admin.users') ? 'bg-[#f0fbf7] text-[#1c7b5b] font-bold border-r-[3px] border-[#1c7b5b]' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 font-medium' }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="{{ request()->routeIs('admin.users') ? '' : 'text-slate-500' }}"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+                        <span class="flex flex-col leading-tight">
+                            Manajemen<br>Pengguna
+                        </span>
+                    </a>
                 </nav>
 
                 <!-- Bottom Links -->
@@ -122,10 +134,10 @@
                     <!-- Profile -->
                     <div class="flex items-center gap-3">
                         <div class="text-right">
-                            <p class="text-[13px] font-bold text-[#1e293b] leading-none">User Umum</p>
-                            <p class="text-[10px] font-bold text-gray-400 mt-1 tracking-wide">Pengguna</p>
+                            <p class="text-[13px] font-bold text-[#1e293b] leading-none">Admin Alpha</p>
+                            <p class="text-[10px] font-bold text-gray-400 mt-1 tracking-wide">Super Admin</p>
                         </div>
-                        <img src="https://ui-avatars.com/api/?name=User+Umum&background=1c7b5b&color=fff" alt="User" class="w-9 h-9 rounded-full border border-gray-200">
+                        <img src="https://ui-avatars.com/api/?name=Admin+Alpha&background=1e293b&color=fff" alt="Admin" class="w-9 h-9 rounded-full border border-gray-200">
                     </div>
                 </div>
             </header>

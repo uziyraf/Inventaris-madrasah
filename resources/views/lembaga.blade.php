@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
     <!-- Breadcrumbs -->
     <div class="flex items-center gap-2 text-[10px] font-bold text-gray-500 tracking-widest uppercase mb-4">
-        <a href="{{ route('dashboard') }}" class="hover:text-gray-700">Dasbor</a>
+        <a href="{{ route('admin.dashboard') }}" class="hover:text-gray-700">Dasbor</a>
         <span class="text-gray-300">
             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
         </span>
