@@ -46,7 +46,7 @@
         </div>
     @endif
 
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
         <div class="bg-white p-6 rounded-sm shadow-sm border border-gray-100 relative">
             <div class="flex justify-between items-start mb-4">
                 <p class="text-[11px] font-bold text-gray-500 tracking-wider uppercase">TOTAL MURID</p>
@@ -73,37 +73,6 @@
             </div>
             <h3 class="text-[32px] font-bold text-[#1e293b] mb-2 leading-none">0</h3>
             <p class="text-[12px] font-medium text-gray-500">Peralatan keluar</p>
-        </div>
-
-        <div class="bg-white p-6 rounded-sm shadow-sm border border-gray-100 relative">
-            <div class="flex justify-between items-start mb-4">
-                <p class="text-[11px] font-bold text-gray-500 tracking-wider uppercase">TERLAMBAT KEMBALI</p>
-                <div class="bg-red-50 p-1 rounded-sm">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                        stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
-                        <line x1="12" y1="9" x2="12" y2="13" />
-                        <line x1="12" y1="17" x2="12.01" y2="17" />
-                    </svg>
-                </div>
-            </div>
-            <h3 class="text-[32px] font-bold text-[#ef4444] mb-2 leading-none">0</h3>
-            <p class="text-[12px] font-medium text-gray-500">Butuh tindak lanjut</p>
-        </div>
-
-        <div class="bg-[#207e60] p-6 rounded-sm shadow-sm text-white relative">
-            <div class="flex justify-between items-start mb-4">
-                <p class="text-[11px] font-bold text-white/90 tracking-wider uppercase">ALOKASI TABLET</p>
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="4" y="2" width="16" height="20" rx="2" ry="2" />
-                    <line x1="12" y1="18" x2="12.01" y2="18" />
-                </svg>
-            </div>
-            <h3 class="text-[32px] font-bold text-white mb-4 leading-none">85%</h3>
-            <div class="w-full bg-black/20 rounded-full h-1.5 mb-2">
-                <div class="bg-white h-1.5 rounded-full" style="width: 85%"></div>
-            </div>
         </div>
     </div>
 
@@ -243,39 +212,7 @@
         </div>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-        <div class="lg:col-span-2 bg-white rounded-sm shadow-sm border border-gray-100 p-6 flex flex-col">
-            <h3 class="text-[16px] font-bold text-[#1e293b] mb-8">Statistik Penggunaan Inventaris</h3>
-            <div class="flex-1 flex items-end justify-center gap-6 pb-2">
-                <div class="w-20 bg-[#eef2f6] rounded-t-sm h-24 transition-all hover:bg-[#e2e8f0]"></div>
-                <div class="w-20 bg-[#eef2f6] rounded-t-sm h-36 transition-all hover:bg-[#e2e8f0]"></div>
-                <div class="w-20 bg-[#207e60] rounded-t-sm h-56 transition-all shadow-md"></div>
-                <div class="w-20 bg-[#eef2f6] rounded-t-sm h-32 transition-all hover:bg-[#e2e8f0]"></div>
-                <div class="w-20 bg-[#38a169] rounded-t-sm h-44 transition-all opacity-90 hover:opacity-100"></div>
-            </div>
-        </div>
 
-        <div class="bg-white rounded-sm shadow-sm border border-gray-100 p-6 flex flex-col">
-            <h3 class="text-[16px] font-bold text-[#1e293b] mb-6">Aktivitas Terakhir</h3>
-            <div class="flex-1 space-y-6">
-                <div class="flex gap-4 relative">
-                    <div class="w-2 h-2 rounded-full bg-[#207e60] mt-1.5 flex-shrink-0 z-10 relative"></div>
-                    <div class="absolute top-3 left-1 w-px h-10 bg-gray-100 z-0"></div>
-                    <div>
-                        <h4 class="text-[13px] font-bold text-[#1e293b] mb-1">Sistem Siap Digunakan</h4>
-                        <p class="text-[12px] text-gray-500 mb-2 leading-relaxed">Menunggu data aktivitas peminjaman
-                            pertama.</p>
-                        <span class="text-[9px] font-bold text-gray-400 uppercase tracking-widest">BARU SAJA</span>
-                    </div>
-                </div>
-            </div>
-
-            <button
-                class="w-full mt-6 py-2.5 bg-white border border-gray-200 text-[#207e60] hover:bg-gray-50 rounded-sm text-[11px] font-bold uppercase tracking-wider transition-colors">
-                LIHAT SEMUA LOG
-            </button>
-        </div>
-    </div>
 
     <div id="modalTambah" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
         <div class="bg-white rounded-sm w-full max-w-2xl p-8 shadow-xl">
