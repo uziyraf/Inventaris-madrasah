@@ -26,6 +26,7 @@ class GuruController extends Controller
             'tanggal_lahir' => 'required|date',
             'alamat' => 'required',
             'jenis_kelamin' => 'required',
+            'status' => 'required',
             'tahun_mulai_mengajar' => 'required|digits:4',
         ]);
 

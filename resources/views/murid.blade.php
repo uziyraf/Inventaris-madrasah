@@ -146,6 +146,7 @@
                         <th scope="col" class="px-6 py-5">ALAMAT</th>
                         <th scope="col" class="px-6 py-5">NO. INDUK</th>
                         <th scope="col" class="px-6 py-5">KELAS</th>
+                        <th scope="col" class="px-6 py-5">STATUS</th>
                         <th scope="col" class="px-6 py-5">NAMA ORANG TUA</th>
                         <th scope="col" class="px-6 py-5">ASAL MADIN</th>
                         <th scope="col" class="px-6 py-5 text-right">AKSI</th>
@@ -188,6 +189,13 @@
                             </td>
                             <td class="px-6 py-5">
                                 <span class="text-[13px] text-gray-700 font-bold">{{ $santri->kelas }}</span>
+                            </td>
+                            <td class="px-6 py-5">
+                                @if($santri->status == 'Aktif')
+                                    <span class="bg-green-100 text-green-700 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Aktif</span>
+                                @else
+                                    <span class="bg-red-50 text-red-600 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Tidak Aktif</span>
+                                @endif
                             </td>
                             <td class="px-6 py-5">
                                 <span class="text-[13px] text-gray-700">{{ $santri->nama_orangtua }}</span>
@@ -314,6 +322,14 @@
                         class="w-full border border-gray-200 rounded-sm px-3 py-2 text-sm focus:outline-none focus:border-[#1c7b5b]">
                 </div>
                 <div>
+                    <label class="block text-[11px] font-bold text-gray-500 uppercase mb-2">Status</label>
+                    <select name="status" required
+                        class="w-full border border-gray-200 rounded-sm px-3 py-2 text-sm focus:outline-none focus:border-[#1c7b5b]">
+                        <option value="Aktif">Aktif</option>
+                        <option value="Tidak Aktif">Tidak Aktif</option>
+                    </select>
+                </div>
+                <div>
                     <label class="block text-[11px] font-bold text-gray-500 uppercase mb-2">Nama Orang Tua</label>
                     <input type="text" name="nama_orangtua" required
                         class="w-full border border-gray-200 rounded-sm px-3 py-2 text-sm focus:outline-none focus:border-[#1c7b5b]">
@@ -377,6 +393,14 @@
                     <label class="block text-[11px] font-bold text-gray-500 uppercase mb-2">Kelas</label>
                     <input type="text" name="kelas" id="edit_kelas" required
                         class="w-full border border-gray-200 rounded-sm px-3 py-2 text-sm focus:outline-none focus:border-[#1c7b5b]">
+                </div>
+                <div>
+                    <label class="block text-[11px] font-bold text-gray-500 uppercase mb-2">Status</label>
+                    <select name="status" id="edit_status" required
+                        class="w-full border border-gray-200 rounded-sm px-3 py-2 text-sm focus:outline-none focus:border-[#1c7b5b]">
+                        <option value="Aktif">Aktif</option>
+                        <option value="Tidak Aktif">Tidak Aktif</option>
+                    </select>
                 </div>
                 <div>
                     <label class="block text-[11px] font-bold text-gray-500 uppercase mb-2">Nama Orang Tua</label>
@@ -447,6 +471,7 @@
             document.getElementById('edit_jenis_kelamin').value = data.jenis_kelamin;
             document.getElementById('edit_alamat').value = data.alamat;
             document.getElementById('edit_kelas').value = data.kelas;
+            document.getElementById('edit_status').value = data.status || 'Aktif';
             document.getElementById('edit_nama_orangtua').value = data.nama_orangtua;
             document.getElementById('edit_asal_madin').value = data.asal_madin;
 

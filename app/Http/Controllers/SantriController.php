@@ -24,6 +24,7 @@ class SantriController extends Controller
             'tanggal_lahir' => 'required|date',
             'alamat' => 'required',
             'kelas' => 'required',
+            'status' => 'required',
             'nama_orangtua' => 'required',
             'asal_madin' => 'required',
         ]);
