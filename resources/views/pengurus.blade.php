@@ -24,52 +24,25 @@
         </div>
     @endif
 
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-        <div class="bg-white p-6 rounded-sm shadow-sm border border-gray-100 flex flex-col justify-between h-36">
-            <div class="flex justify-between items-start">
-                <div class="w-10 h-10 rounded-full bg-[#f0fbf7] flex items-center justify-center text-[#1c7b5b]">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 15v-1a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1"/><circle cx="10" cy="9" r="2"/><path d="M16 9h2"/><path d="M16 13h2"/></svg>
-                </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div class="bg-white p-6 rounded-sm shadow-sm border border-gray-100 flex flex-col items-center justify-center text-center h-40">
+            <div class="w-12 h-12 rounded-full bg-[#f0fbf7] flex items-center justify-center text-[#1c7b5b] mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 15v-1a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1"/><circle cx="10" cy="9" r="2"/><path d="M16 9h2"/><path d="M16 13h2"/></svg>
             </div>
             <div>
-                <p class="text-[12px] font-medium text-gray-500 mb-1">Total Staf</p>
-                <h3 class="text-[32px] font-bold text-[#1e293b] leading-none">{{ $penguruses->total() }}</h3>
+                <p class="text-[13px] font-medium text-gray-500 mb-1">Total Staf</p>
+                <h3 class="text-[36px] font-bold text-[#1e293b] leading-none">{{ $penguruses->total() }}</h3>
             </div>
         </div>
 
-        <div class="bg-white p-6 rounded-sm shadow-sm border border-gray-100 flex flex-col justify-between h-36">
-            <div class="flex justify-between items-start">
-                <div class="w-10 h-10 rounded-full bg-[#f0fbf7] flex items-center justify-center text-[#1c7b5b]">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-                </div>
+        <div class="bg-white p-6 rounded-sm shadow-sm border border-gray-100 flex flex-col items-center justify-center text-center h-40">
+            <div class="w-12 h-12 rounded-full bg-[#f0fbf7] flex items-center justify-center text-[#1c7b5b] mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
             </div>
             <div>
-                <p class="text-[12px] font-medium text-gray-500 mb-1">Pengurus Aktif</p>
-                <h3 class="text-[32px] font-bold text-[#1e293b] leading-none">{{ $penguruses->where('status', 'Aktif')->count() }}</h3>
+                <p class="text-[13px] font-medium text-gray-500 mb-1">Pengurus Aktif</p>
+                <h3 class="text-[36px] font-bold text-[#1e293b] leading-none">{{ $penguruses->where('status', 'Aktif')->count() }}</h3>
             </div>
-        </div>
-
-        <div class="md:col-span-2 bg-white p-6 rounded-sm shadow-sm border border-gray-100 flex flex-col justify-between h-36">
-            <div class="flex justify-between items-start mb-4">
-                <p class="text-[13px] font-medium text-gray-600">Status Sistem</p>
-                <div class="flex items-center gap-1.5">
-                    <div class="w-2 h-2 rounded-full bg-[#1c7b5b]"></div>
-                    <span class="text-[11px] font-bold text-[#1c7b5b]">Operasional</span>
-                </div>
-            </div>
-            <div class="flex items-end justify-between h-12 mb-3 gap-1">
-                <div class="w-full bg-[#e2e8f0] h-6 rounded-sm"></div>
-                <div class="w-full bg-[#94d1b8] h-8 rounded-sm"></div>
-                <div class="w-full bg-[#bce3d2] h-4 rounded-sm"></div>
-                <div class="w-full bg-[#6dbf9b] h-9 rounded-sm"></div>
-                <div class="w-full bg-[#1c7b5b] h-7 rounded-sm"></div>
-                <div class="w-full bg-[#46a581] h-10 rounded-sm"></div>
-                <div class="w-full bg-[#94d1b8] h-5 rounded-sm"></div>
-                <div class="w-full bg-[#6dbf9b] h-8 rounded-sm"></div>
-                <div class="w-full bg-[#207e60] h-6 rounded-sm"></div>
-                <div class="w-full bg-[#155d44] h-9 rounded-sm"></div>
-            </div>
-            <p class="text-[11px] text-gray-400">Aktivitas sinkronisasi inventaris selama 24 jam terakhir</p>
         </div>
     </div>
 
@@ -166,34 +139,7 @@
         </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pb-8">
-        <div class="bg-white rounded-sm shadow-sm border border-gray-100 p-6">
-            <div class="flex items-center gap-3 mb-4">
-                <div class="text-[#1c7b5b]">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                </div>
-                <h3 class="text-[15px] font-bold text-[#1e293b]">Kebijakan Kontrol Akses</h3>
-            </div>
-            <p class="text-[13px] text-gray-600 leading-relaxed">
-                Hanya Pengurus dengan peran "Manajer Inventaris" yang dapat menyetujui permintaan peralatan bernilai tinggi. Hubungi tim IT untuk eskalasi hak istimewa.
-            </p>
-        </div>
 
-        <div class="bg-white rounded-sm shadow-sm border border-gray-100 p-6">
-            <div class="flex items-center gap-3 mb-5">
-                <div class="text-[#1c7b5b]">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg>
-                </div>
-                <h3 class="text-[15px] font-bold text-[#1e293b]">Log Aktivitas Terbaru</h3>
-            </div>
-            <div class="space-y-4">
-                <div class="flex justify-between items-start border-b border-gray-50 pb-4">
-                    <p class="text-[12px] text-gray-600 font-medium">Sistem siap digunakan</p>
-                    <span class="text-[11px] text-gray-400 whitespace-nowrap">Baru saja</span>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <div id="modalTambah" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
         <div class="bg-white rounded-sm w-full max-w-lg p-8 shadow-xl">

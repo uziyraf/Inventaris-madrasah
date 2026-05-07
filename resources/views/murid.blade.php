@@ -47,32 +47,36 @@
     @endif
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-        <div class="bg-white p-6 rounded-sm shadow-sm border border-gray-100 relative">
-            <div class="flex justify-between items-start mb-4">
-                <p class="text-[11px] font-bold text-gray-500 tracking-wider uppercase">TOTAL MURID</p>
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke="#1c7b5b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <div class="bg-white p-6 rounded-sm shadow-sm border border-gray-100 flex flex-col items-center justify-center text-center h-40">
+            <div class="w-12 h-12 rounded-full bg-[#f0fbf7] flex items-center justify-center text-[#1c7b5b] mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
                     <circle cx="9" cy="7" r="4" />
                     <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
                     <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                 </svg>
             </div>
-            <h3 class="text-[32px] font-bold text-[#1e293b] mb-2 leading-none">{{ $santris->total() }}</h3>
-            <p class="text-[12px] font-bold text-[#1c7b5b]">Terdaftar di sistem</p>
+            <div>
+                <p class="text-[13px] font-medium text-gray-500 mb-1 uppercase tracking-wider">TOTAL MURID</p>
+                <h3 class="text-[36px] font-bold text-[#1e293b] leading-none mb-1">{{ $santris->total() }}</h3>
+                <p class="text-[12px] font-bold text-[#1c7b5b]">Terdaftar di sistem</p>
+            </div>
         </div>
 
-        <div class="bg-white p-6 rounded-sm shadow-sm border border-gray-100 relative">
-            <div class="flex justify-between items-start mb-4">
-                <p class="text-[11px] font-bold text-gray-500 tracking-wider uppercase">PEMINJAMAN AKTIF</p>
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <div class="bg-white p-6 rounded-sm shadow-sm border border-gray-100 flex flex-col items-center justify-center text-center h-40">
+            <div class="w-12 h-12 rounded-full bg-[#fef3c7] flex items-center justify-center text-[#f59e0b] mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
                     <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
                 </svg>
             </div>
-            <h3 class="text-[32px] font-bold text-[#1e293b] mb-2 leading-none">0</h3>
-            <p class="text-[12px] font-medium text-gray-500">Peralatan keluar</p>
+            <div>
+                <p class="text-[13px] font-medium text-gray-500 mb-1 uppercase tracking-wider">PEMINJAMAN AKTIF</p>
+                <h3 class="text-[36px] font-bold text-[#1e293b] leading-none mb-1">0</h3>
+                <p class="text-[12px] font-medium text-gray-500">Peralatan keluar</p>
+            </div>
         </div>
     </div>
 
