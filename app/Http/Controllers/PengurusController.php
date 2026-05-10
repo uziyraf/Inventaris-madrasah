@@ -39,4 +39,37 @@ class PengurusController extends Controller
         $pengurus->delete();
         return redirect()->back()->with('success', 'Data pengurus berhasil dihapus');
     }
+
+    public function exportCsv()
+    {
+        $penguruses = Pengurus::latest()->get();
+
+        $headers = [
+            "Content-type"        => "text/csv",
+            "Content-Disposition" => "attachment; filename=data_pengurus.csv",
+            "Pragma"              => "no-cache",
+            "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
+            "Expires"             => "0"
+        ];
+
+        $columns = ['Nama', 'Jabatan', 'Status', 'Alamat', 'Keterangan'];
+
+        $callback = function() use($penguruses, $columns) {
+            $file = fopen('php://output', 'w');
+            fputcsv($file, $columns);
+
+            foreach ($penguruses as $pengurus) {
+                fputcsv($file, [
+                    $pengurus->nama,
+                    $pengurus->jabatan,
+                    $pengurus->status,
+                    $pengurus->alamat,
+                    $pengurus->keterangan ?? '-',
+                ]);
+            }
+            fclose($file);
+        };
+
+        return response()->stream($callback, 200, $headers);
+    }
 }

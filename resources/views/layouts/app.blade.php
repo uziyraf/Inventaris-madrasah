@@ -47,9 +47,9 @@
                     </svg>
                 </div>
                 <div>
-                    <h1 class="text-[17px] font-extrabold text-[#1e293b] tracking-tight leading-none">Manajer Inventaris
+                    <h1 class="text-[17px] font-extrabold text-[#1e293b] tracking-tight leading-none">Data Lembaga
                     </h1>
-                    <p class="text-[11px] font-medium text-gray-400 mt-1">Portal Institusi</p>
+                    <p class="text-[11px] font-medium text-gray-400 mt-1">Madrasah Diniyah Takmiliyah</p>
                 </div>
             </div>
 

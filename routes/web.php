@@ -56,6 +56,13 @@ Route::middleware(['auth', 'role:lembaga'])->group(function () {
     Route::put('/inventaris/{id}', [InventarisController::class, 'update'])->name('inventaris.update');
     Route::delete('/inventaris/{id}', [InventarisController::class, 'destroy'])->name('inventaris.destroy');
 
+    // Export Routes
+    Route::get('/guru/export', [GuruController::class, 'exportCsv'])->name('guru.export');
+    Route::get('/pengurus/export', [PengurusController::class, 'exportCsv'])->name('pengurus.export');
+    Route::get('/data-kelas/export', [KelasController::class, 'exportCsv'])->name('kelas.export');
+    Route::get('/murid/export', [SantriController::class, 'exportCsv'])->name('murid.export');
+    Route::get('/inventaris/export', [InventarisController::class, 'exportCsv'])->name('inventaris.export');
+
 });
 
 

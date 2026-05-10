@@ -54,4 +54,37 @@ class InventarisController extends Controller
         $item->delete();
         return redirect()->back()->with('success', 'Data aset inventaris berhasil dihapus');
     }
+
+    public function exportCsv()
+    {
+        $inventaris = Inventaris::latest()->get();
+
+        $headers = [
+            "Content-type"        => "text/csv",
+            "Content-Disposition" => "attachment; filename=laporan_inventaris.csv",
+            "Pragma"              => "no-cache",
+            "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
+            "Expires"             => "0"
+        ];
+
+        $columns = ['Nama Aset', 'Kategori', 'Jumlah', 'Kondisi', 'Keterangan'];
+
+        $callback = function() use($inventaris, $columns) {
+            $file = fopen('php://output', 'w');
+            fputcsv($file, $columns);
+
+            foreach ($inventaris as $item) {
+                fputcsv($file, [
+                    $item->aset,
+                    $item->kategori,
+                    $item->jumlah,
+                    $item->kondisi,
+                    $item->keterangan ?? '-',
+                ]);
+            }
+            fclose($file);
+        };
+
+        return response()->stream($callback, 200, $headers);
+    }
 }
