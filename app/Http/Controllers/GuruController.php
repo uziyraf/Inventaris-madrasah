@@ -26,6 +26,7 @@ class GuruController extends Controller
             'tanggal_lahir' => 'required|date',
             'alamat' => 'required',
             'jenis_kelamin' => 'required',
+            'status' => 'required',
             'tahun_mulai_mengajar' => 'required|digits:4',
         ]);
 
@@ -45,5 +46,41 @@ class GuruController extends Controller
         $guru = Guru::findOrFail($id);
         $guru->delete();
         return redirect()->back()->with('success', 'Data guru berhasil dihapus');
+    }
+
+    public function exportCsv()
+    {
+        $gurus = Guru::where('lembaga_id', auth()->user()->lembaga_id)->latest()->get();
+
+        $headers = [
+            "Content-type"        => "text/csv",
+            "Content-Disposition" => "attachment; filename=data_guru.csv",
+            "Pragma"              => "no-cache",
+            "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
+            "Expires"             => "0"
+        ];
+
+        $columns = ['NIK', 'Nama Guru', 'Tempat Lahir', 'Tanggal Lahir', 'Jenis Kelamin', 'Alamat', 'Tahun Mulai Mengajar', 'Status'];
+
+        $callback = function() use($gurus, $columns) {
+            $file = fopen('php://output', 'w');
+            fputcsv($file, $columns);
+
+            foreach ($gurus as $guru) {
+                fputcsv($file, [
+                    $guru->nik,
+                    $guru->nama_guru,
+                    $guru->tempat_lahir,
+                    $guru->tanggal_lahir,
+                    $guru->jenis_kelamin,
+                    $guru->alamat,
+                    $guru->tahun_mulai_mengajar,
+                    $guru->status,
+                ]);
+            }
+            fclose($file);
+        };
+
+        return response()->stream($callback, 200, $headers);
     }
 }

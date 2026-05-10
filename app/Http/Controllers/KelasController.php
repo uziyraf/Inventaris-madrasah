@@ -48,4 +48,38 @@ class KelasController extends Controller
 
         return view('kelas', compact('totalSiswa', 'totalLaki', 'totalPerempuan', 'kelasData'));
     }
+
+    public function exportCsv()
+    {
+        $lembaga_id = auth()->user()->lembaga_id;
+        $santris = Santri::where('lembaga_id', $lembaga_id)->get();
+        $groupedClasses = $santris->groupBy('kelas')->sortKeys();
+
+        $headers = [
+            "Content-type"        => "text/csv",
+            "Content-Disposition" => "attachment; filename=data_kelas.csv",
+            "Pragma"              => "no-cache",
+            "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
+            "Expires"             => "0"
+        ];
+
+        $columns = ['Nama Kelas', 'Total Siswa', 'Laki-laki', 'Perempuan'];
+
+        $callback = function() use($groupedClasses, $columns) {
+            $file = fopen('php://output', 'w');
+            fputcsv($file, $columns);
+
+            foreach ($groupedClasses as $nama_kelas => $students) {
+                fputcsv($file, [
+                    $nama_kelas,
+                    $students->count(),
+                    $students->where('jenis_kelamin', 'Laki-laki')->count(),
+                    $students->where('jenis_kelamin', 'Perempuan')->count(),
+                ]);
+            }
+            fclose($file);
+        };
+
+        return response()->stream($callback, 200, $headers);
+    }
 }

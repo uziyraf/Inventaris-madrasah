@@ -19,6 +19,7 @@ class Santri extends Model
         'jenis_kelamin',
         'alamat',
         'kelas',
+        'status',
         'nama_orangtua',
         'asal_madin'
     ];

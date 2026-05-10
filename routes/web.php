@@ -10,7 +10,9 @@ use App\Http\Controllers\GuruController;
 use App\Http\Controllers\Yayasan\LembagaYayasanController;
 use App\Http\Controllers\Yayasan\RekapDataController;
 use App\Http\Controllers\Yayasan\UserController;
+use App\Http\Controllers\Yayasan\LaporanYayasanController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LaporanController;
 use Illuminate\Support\Facades\Route;
 
 // ==================================================
@@ -56,6 +58,18 @@ Route::middleware(['auth', 'role:lembaga'])->group(function () {
     Route::put('/inventaris/{id}', [InventarisController::class, 'update'])->name('inventaris.update');
     Route::delete('/inventaris/{id}', [InventarisController::class, 'destroy'])->name('inventaris.destroy');
 
+    // Export Routes
+    Route::get('/guru/export', [GuruController::class, 'exportCsv'])->name('guru.export');
+    Route::get('/pengurus/export', [PengurusController::class, 'exportCsv'])->name('pengurus.export');
+    Route::get('/data-kelas/export', [KelasController::class, 'exportCsv'])->name('kelas.export');
+    Route::get('/murid/export', [SantriController::class, 'exportCsv'])->name('murid.export');
+    Route::get('/inventaris/export', [InventarisController::class, 'exportCsv'])->name('inventaris.export');
+
+    // Laporan Routes
+    Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan');
+    Route::post('/laporan', [LaporanController::class, 'store'])->name('laporan.store');
+    Route::delete('/laporan/{id}', [LaporanController::class, 'destroy'])->name('laporan.destroy');
+
 });
 
 
@@ -77,4 +91,8 @@ Route::middleware(['auth', 'role:yayasan'])->prefix('admin')->name('admin.')->gr
     Route::get('/kelas', [RekapDataController::class, 'kelas'])->name('kelas');
     Route::get('/pengurus', [RekapDataController::class, 'pengurus'])->name('pengurus');
     Route::get('/inventaris', [RekapDataController::class, 'inventaris'])->name('inventaris');
+
+    // Laporan Yayasan
+    Route::get('/laporan', [LaporanYayasanController::class, 'index'])->name('laporan');
+    Route::patch('/laporan/{id}/status', [LaporanYayasanController::class, 'updateStatus'])->name('laporan.status');
 });

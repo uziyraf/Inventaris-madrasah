@@ -18,7 +18,7 @@
             <p class="text-gray-500 text-[14px]">Kelola informasi tenaga pendidik dan inventaris yang ditugaskan.</p>
         </div>
         <div class="flex gap-3">
-            <button
+            <a href="{{ route('guru.export') }}"
                 class="bg-white border border-gray-200 text-[#1e293b] hover:bg-gray-50 px-5 py-2.5 rounded-sm font-semibold text-[13px] flex items-center gap-2 shadow-sm transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -27,7 +27,7 @@
                     <line x1="12" y1="15" x2="12" y2="3" />
                 </svg>
                 Ekspor CSV
-            </button>
+            </a>
             <button onclick="toggleModal('modalTambah')"
                 class="bg-[#1c7b5b] hover:bg-[#155d44] text-white px-5 py-2.5 rounded-sm font-semibold text-[13px] flex items-center gap-2 shadow-sm transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -78,6 +78,7 @@
                         <th scope="col" class="px-6 py-5">L/P</th>
                         <th scope="col" class="px-6 py-5">TTL</th>
                         <th scope="col" class="px-6 py-5">ALAMAT</th>
+                        <th scope="col" class="px-6 py-5">STATUS</th>
                         <th scope="col" class="px-6 py-5">MULAI MENGAJAR</th>
                         <th scope="col" class="px-6 py-5 text-right">AKSI</th>
                     </tr>
@@ -103,6 +104,13 @@
                                     {{ \Carbon\Carbon::parse($guru->tanggal_lahir)->translatedFormat('d M Y') }}</p>
                             </td>
                             <td class="px-6 py-5 truncate max-w-[150px]" title="{{ $guru->alamat }}">{{ $guru->alamat }}</td>
+                            <td class="px-6 py-5">
+                                @if($guru->status == 'Aktif')
+                                    <span class="bg-green-100 text-green-700 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Aktif</span>
+                                @else
+                                    <span class="bg-red-50 text-red-600 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Tidak Aktif</span>
+                                @endif
+                            </td>
                             <td class="px-6 py-5 font-bold text-[#1c7b5b]">{{ $guru->tahun_mulai_mengajar }}</td>
                             <td class="px-6 py-5 text-right">
                                 <div class="flex items-center justify-end gap-3">
@@ -195,6 +203,14 @@
                     </select>
                 </div>
                 <div>
+                    <label class="block text-[11px] font-bold text-gray-500 uppercase mb-2">Status</label>
+                    <select name="status" required
+                        class="w-full border border-gray-200 rounded-sm px-3 py-2 text-sm focus:outline-none focus:border-[#1c7b5b]">
+                        <option value="Aktif">Aktif</option>
+                        <option value="Tidak Aktif">Tidak Aktif</option>
+                    </select>
+                </div>
+                <div>
                     <label class="block text-[11px] font-bold text-gray-500 uppercase mb-2">Tahun Mulai Mengajar</label>
                     <input type="number" name="tahun_mulai_mengajar" required min="1990" max="2099"
                         class="w-full border border-gray-200 rounded-sm px-3 py-2 text-sm focus:outline-none focus:border-[#1c7b5b]">
@@ -247,6 +263,14 @@
                         class="w-full border border-gray-200 rounded-sm px-3 py-2 text-sm focus:outline-none focus:border-[#1c7b5b]">
                         <option value="Laki-laki">Laki-laki</option>
                         <option value="Perempuan">Perempuan</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-[11px] font-bold text-gray-500 uppercase mb-2">Status</label>
+                    <select name="status" id="edit_status" required
+                        class="w-full border border-gray-200 rounded-sm px-3 py-2 text-sm focus:outline-none focus:border-[#1c7b5b]">
+                        <option value="Aktif">Aktif</option>
+                        <option value="Tidak Aktif">Tidak Aktif</option>
                     </select>
                 </div>
                 <div>
@@ -309,6 +333,7 @@
             document.getElementById('edit_tanggal_lahir').value = data.tanggal_lahir;
             document.getElementById('edit_alamat').value = data.alamat;
             document.getElementById('edit_jenis_kelamin').value = data.jenis_kelamin;
+            document.getElementById('edit_status').value = data.status || 'Aktif';
             document.getElementById('edit_tahun_mulai_mengajar').value = data.tahun_mulai_mengajar;
 
             toggleModal('modalEdit');
