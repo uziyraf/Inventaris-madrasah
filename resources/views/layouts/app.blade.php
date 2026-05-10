@@ -153,6 +153,21 @@
                         Inventaris
                     </a>
 
+                    <!-- Laporan -->
+                    <a href="{{ route('laporan') }}"
+                        class="flex items-center gap-4 px-8 py-2.5 transition-colors {{ request()->routeIs('laporan') ? 'bg-[#f0fbf7] text-[#1c7b5b] font-bold border-r-[3px] border-[#1c7b5b]' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 font-medium' }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="{{ request()->routeIs('laporan') ? '' : 'text-slate-500' }}">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                            <polyline points="10 9 9 9 8 9"/>
+                        </svg>
+                        Laporan
+                    </a>
+
 
                 </nav>
 
