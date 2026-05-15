@@ -12,12 +12,12 @@
         <span class="text-[#1c7b5b]">REKAP INVENTARIS</span>
     </div>
 
-    <div class="flex justify-between items-start mb-8">
+    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-6 sm:mb-8">
         <div>
             <h2 class="text-[26px] font-bold text-[#1e293b] mb-1.5 tracking-tight">Katalog Inventaris Global</h2>
             <p class="text-gray-500 text-[14px]">Pantau, audit, dan lacak seluruh aset/peralatan dari semua lembaga.</p>
         </div>
-        <div class="flex gap-3">
+        <div class="flex flex-wrap gap-3">
             <button
                 class="bg-white border border-gray-200 text-[#1e293b] hover:bg-gray-50 px-5 py-2.5 rounded-sm font-semibold text-[13px] flex items-center gap-2 shadow-sm transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -292,7 +292,7 @@
         </div>
 
         @if(method_exists($inventaris, 'links'))
-            <div class="px-6 py-5 flex items-center justify-between border-t border-gray-100">
+            <div class="px-6 py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-t border-gray-100">
                 <div class="w-full">
                     {{ $inventaris->links() }}
                 </div>

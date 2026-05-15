@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="flex justify-between items-start mb-8">
+    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-6 sm:mb-8">
         <div>
             <h2 class="text-3xl font-bold text-gray-900 mb-2">Dasbor Utama</h2>
             <p class="text-gray-500 text-sm">Ikhtisar ringkas sistem inventaris dan metrik SDM institusi.</p>
         </div>
-        <div class="flex gap-3">
+        <div class="flex flex-wrap gap-3">
             <button
                 class="bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 px-4 py-2.5 rounded-sm font-medium text-sm flex items-center gap-2 shadow-sm transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
@@ -145,7 +145,7 @@
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 pb-12">
         <div class="lg:col-span-2 bg-white rounded-sm shadow-sm border border-gray-200 flex flex-col">
-            <div class="p-6 border-b border-gray-200 flex justify-between items-center bg-gray-50/50">
+            <div class="p-6 border-b border-gray-200 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 bg-gray-50/50">
                 <h3 class="text-lg font-bold text-gray-900">Aktivitas Inventaris Terbaru</h3>
                 <a href="#" class="text-sm font-semibold text-[#1c7b5b] hover:underline">Lihat Semua</a>
             </div>

@@ -9,3 +9,101 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+@layer base {
+    [x-cloak] {
+        display: none !important;
+    }
+
+    html {
+        min-width: 320px;
+    }
+
+    body {
+        overflow-x: hidden;
+    }
+
+    input,
+    select,
+    textarea,
+    button {
+        min-width: 0;
+    }
+
+    main table {
+        min-width: 720px;
+    }
+}
+
+@media (max-width: 640px) {
+    .p-8 {
+        padding: 1rem;
+    }
+
+    .p-6 {
+        padding: 1rem;
+    }
+
+    .px-8,
+    .px-6 {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .py-6 {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    .gap-8 {
+        gap: 1.25rem;
+    }
+
+    .text-4xl {
+        font-size: 1.875rem;
+        line-height: 2.25rem;
+    }
+
+    .text-3xl {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+
+    .text-\[48px\] {
+        font-size: 2rem;
+        line-height: 2.25rem;
+    }
+
+    .text-\[36px\],
+    .text-\[32px\] {
+        font-size: 1.75rem;
+        line-height: 2rem;
+    }
+
+    .text-\[28px\],
+    .text-\[26px\] {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+
+    .tracking-widest {
+        letter-spacing: 0.06em;
+    }
+
+    .grid-cols-2,
+    .grid-cols-3,
+    .grid-cols-4 {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .max-w-lg,
+    .max-w-xl,
+    .max-w-2xl,
+    .max-w-3xl {
+        max-width: calc(100vw - 2rem);
+    }
+
+    .min-w-\[140px\] {
+        min-width: 0;
+    }
+}

@@ -12,7 +12,7 @@
         <span class="text-[#1c7b5b]">PROFIL LEMBAGA</span>
     </div>
 
-    <div class="flex justify-between items-start mb-8">
+    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-6 sm:mb-8">
         <div>
             <h2 class="text-[26px] font-bold text-[#1e293b] mb-1.5 tracking-tight">Profil & Identitas Madrasah</h2>
             <p class="text-gray-500 text-[14px]">Kelola informasi dasar, legalitas, dan detail operasional lembaga.</p>

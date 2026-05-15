@@ -3,7 +3,7 @@
 @section('content')
     <div x-data="{ modalOpen: false, selectedRole: 'lembaga' }">
         <!-- Header -->
-        <div class="flex justify-between items-start mb-8">
+        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-6 sm:mb-8">
             <div>
                 <h2 class="text-[28px] font-bold text-[#1e293b] mb-1.5 tracking-tight">Manajemen Pengguna</h2>
                 <p class="text-gray-500 text-[14px]">Kelola akun akses untuk Super Admin Yayasan dan Admin Lembaga.</p>
@@ -80,7 +80,7 @@
 
             <div x-show="modalOpen" x-transition
                 class="relative w-full max-w-lg bg-white rounded-md shadow-2xl m-4 flex flex-col">
-                <div class="px-6 py-4 border-b border-gray-100 flex justify-between items-center bg-gray-50/80">
+                <div class="px-6 py-4 border-b border-gray-100 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 bg-gray-50/80">
                     <h3 class="text-[18px] font-bold text-[#1e293b]">Buat Akun Pengguna</h3>
                     <button @click="modalOpen = false" class="text-gray-400 hover:text-red-500 p-2"><svg
                             xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"

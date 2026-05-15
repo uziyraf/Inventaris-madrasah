@@ -12,12 +12,12 @@
         <span class="text-[#1c7b5b]">REKAP DATA GURU</span>
     </div>
 
-    <div class="flex justify-between items-start mb-8">
+    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-6 sm:mb-8">
         <div>
             <h2 class="text-[26px] font-bold text-[#1e293b] mb-1.5 tracking-tight">Rekapitulasi Data Guru</h2>
             <p class="text-gray-500 text-[14px]">Pantau informasi seluruh tenaga pendidik dari semua lembaga.</p>
         </div>
-        <div class="flex gap-3">
+        <div class="flex flex-wrap gap-3">
             <button
                 class="bg-white border border-gray-200 text-[#1e293b] hover:bg-gray-50 px-5 py-2.5 rounded-sm font-semibold text-[13px] flex items-center gap-2 shadow-sm transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -51,7 +51,7 @@
     </div>
 
     <div class="bg-white rounded-sm shadow-sm border border-gray-200 mb-8">
-        <div class="p-4 border-b border-gray-100 flex justify-between items-center bg-white">
+        <div class="p-4 border-b border-gray-100 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 bg-white">
             <p class="text-[10px] text-gray-400 font-bold tracking-wider uppercase">
                 MENAMPILKAN DATA GURU DARI SELURUH LEMBAGA
             </p>

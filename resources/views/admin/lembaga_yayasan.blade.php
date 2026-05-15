@@ -23,12 +23,12 @@
         </div>
 
         <!-- Page Header -->
-        <div class="flex justify-between items-start mb-8">
+        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-6 sm:mb-8">
             <div>
                 <h2 class="text-[28px] font-bold text-[#1e293b] mb-1.5 tracking-tight">Daftar Lembaga Naungan</h2>
                 <p class="text-gray-500 text-[14px]">Pantau informasi dan legalitas seluruh madrasah di bawah yayasan.</p>
             </div>
-            <div class="flex gap-3">
+            <div class="flex flex-wrap gap-3">
                 <button
                     class="bg-[#1c7b5b] hover:bg-[#155d44] text-white px-5 py-2.5 rounded-sm font-semibold text-[13px] flex items-center gap-2 shadow-sm transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -253,7 +253,7 @@
                 </div>
 
                 <!-- Modal Footer -->
-                <div class="px-8 py-4 border-t border-gray-100 bg-gray-50/50 flex justify-between items-center shrink-0">
+                <div class="px-8 py-4 border-t border-gray-100 bg-gray-50/50 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 shrink-0">
                     <button class="text-[12px] font-bold text-[#1c7b5b] hover:underline flex items-center gap-1">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
