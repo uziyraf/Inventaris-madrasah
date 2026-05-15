@@ -12,7 +12,7 @@
         <span class="text-[#1c7b5b]">LAPORAN</span>
     </div>
 
-    <div class="flex justify-between items-start mb-8">
+    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-6 sm:mb-8">
         <div>
             <h2 class="text-[26px] font-bold text-[#1e293b] mb-1.5 tracking-tight">Rekap Laporan Semua Lembaga</h2>
             <p class="text-gray-500 text-[14px]">Pantau dan perbarui status laporan triwulan dari seluruh madrasah.</p>
@@ -74,7 +74,7 @@
 
     {{-- Table --}}
     <div class="bg-white rounded-sm shadow-sm border border-gray-200 mb-8">
-        <div class="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
+        <div class="px-6 py-4 border-b border-gray-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <h3 class="text-[16px] font-bold text-[#1e293b]">Daftar Semua Laporan</h3>
             <span class="text-[12px] text-gray-400 font-medium">{{ $laporans->count() }} laporan terdaftar</span>
         </div>

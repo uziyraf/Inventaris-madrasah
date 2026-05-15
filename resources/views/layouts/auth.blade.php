@@ -14,13 +14,13 @@
         body { font-family: 'Inter', sans-serif; }
     </style>
 </head>
-<body class="h-screen overflow-hidden antialiased text-gray-800 bg-white">
-    <div class="flex h-screen">
+<body class="min-h-screen overflow-x-hidden antialiased text-gray-800 bg-white">
+    <div class="flex min-h-screen">
         <!-- Left Side: Form -->
-        <div class="w-full lg:w-1/2 flex flex-col relative bg-white">
+        <div class="w-full lg:w-1/2 min-h-screen flex flex-col relative bg-white">
             
             <!-- Logo Top -->
-            <div class="pt-8 pb-4 px-8 sm:px-16 md:px-24 xl:px-32 flex-shrink-0 flex items-center gap-3">
+            <div class="pt-6 sm:pt-8 pb-4 px-6 sm:px-16 md:px-24 xl:px-32 flex-shrink-0 flex items-center gap-3">
                 <div class="w-8 h-8 bg-[#207e60] rounded-sm flex items-center justify-center flex-shrink-0 shadow-sm">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg>
                 </div>
@@ -31,14 +31,14 @@
             </div>
 
             <!-- Content -->
-            <div class="flex-1 flex flex-col justify-center px-8 sm:px-16 md:px-24 xl:px-32 py-4">
+            <div class="flex-1 flex flex-col justify-center px-6 sm:px-16 md:px-24 xl:px-32 py-6 sm:py-4">
                 <div class="w-full max-w-md mx-auto">
                     @yield('content')
                 </div>
             </div>
             
             <!-- Footer text -->
-            <div class="pt-4 pb-8 px-8 sm:px-16 md:px-24 xl:px-32 flex-shrink-0 text-[11px] text-gray-400 font-medium">
+            <div class="pt-4 pb-6 sm:pb-8 px-6 sm:px-16 md:px-24 xl:px-32 flex-shrink-0 text-[11px] text-gray-400 font-medium">
                 &copy; {{ date('Y') }} Sistem Inventaris Madrasah. All rights reserved.
             </div>
         </div>

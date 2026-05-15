@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Page Header -->
-    <div class="flex justify-between items-start mb-8">
+    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-6 sm:mb-8">
         <div>
             <h2 class="text-3xl font-bold text-gray-900 mb-2">Akun Pengguna</h2>
             <p class="text-gray-500 text-sm">Kelola tingkat akses sistem dan peran institusional di seluruh departemen.</p>
@@ -89,7 +89,7 @@
                 </button>
             </div>
             
-            <div class="flex gap-3">
+            <div class="flex flex-wrap gap-3">
                 <button class="p-2.5 text-gray-500 hover:text-gray-700 bg-white border border-gray-200 rounded-sm hover:bg-gray-50 transition-colors shadow-sm">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 </button>
@@ -291,7 +291,7 @@
                 <h3 class="text-xl font-bold mb-3">Laporan Otomatis</h3>
                 <p class="text-gray-400 text-sm leading-relaxed">Laporan Aktivitas Pengguna mingguan siap untuk diunduh.</p>
             </div>
-            <div class="flex gap-3">
+            <div class="flex flex-wrap gap-3">
                 <button class="w-11 h-11 rounded-full border border-gray-600 hover:bg-gray-800 flex items-center justify-center transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                 </button>

@@ -25,36 +25,50 @@
 <body class="h-full antialiased text-gray-800 bg-[#f8fafc]">
     <div x-data="{ sidebarOpen: false }" class="flex h-screen overflow-hidden">
 
+        <div x-show="sidebarOpen" x-cloak x-transition.opacity @click="sidebarOpen = false"
+            class="fixed inset-0 z-30 bg-slate-900/40 lg:hidden"></div>
+
         <!-- Sidebar -->
         <aside
-            class="w-[280px] bg-white border-r border-gray-200 flex flex-col transition-all duration-300 z-20 shrink-0">
+            :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'"
+            class="fixed inset-y-0 left-0 z-40 w-[280px] max-w-[85vw] bg-white border-r border-gray-200 flex flex-col transition-transform duration-300 shrink-0 lg:static lg:z-20">
             <!-- Sidebar Header -->
-            <div class="pt-8 pb-6 px-8 flex items-center gap-3">
-                <div class="w-8 h-8 bg-[#207e60] rounded-sm flex items-center justify-center flex-shrink-0 shadow-sm">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                        stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="4" y="2" width="16" height="20" rx="2" ry="2" />
-                        <path d="M9 22v-4h6v4" />
-                        <path d="M8 6h.01" />
-                        <path d="M16 6h.01" />
-                        <path d="M12 6h.01" />
-                        <path d="M12 10h.01" />
-                        <path d="M12 14h.01" />
-                        <path d="M16 10h.01" />
-                        <path d="M16 14h.01" />
-                        <path d="M8 10h.01" />
-                        <path d="M8 14h.01" />
+            <div class="pt-6 lg:pt-8 pb-5 lg:pb-6 px-5 lg:px-8 flex items-center justify-between gap-3">
+                <div class="flex items-center gap-3 min-w-0">
+                    <div class="w-8 h-8 bg-[#207e60] rounded-sm flex items-center justify-center flex-shrink-0 shadow-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="4" y="2" width="16" height="20" rx="2" ry="2" />
+                            <path d="M9 22v-4h6v4" />
+                            <path d="M8 6h.01" />
+                            <path d="M16 6h.01" />
+                            <path d="M12 6h.01" />
+                            <path d="M12 10h.01" />
+                            <path d="M12 14h.01" />
+                            <path d="M16 10h.01" />
+                            <path d="M16 14h.01" />
+                            <path d="M8 10h.01" />
+                            <path d="M8 14h.01" />
+                        </svg>
+                    </div>
+                    <div class="min-w-0">
+                        <h1 class="text-[17px] font-extrabold text-[#1e293b] tracking-tight leading-none truncate">Data Lembaga
+                        </h1>
+                        <p class="text-[11px] font-medium text-gray-400 mt-1 truncate">Madrasah Diniyah Takmiliyah</p>
+                    </div>
+                </div>
+                <button type="button" @click="sidebarOpen = false"
+                    class="lg:hidden w-9 h-9 rounded-sm border border-gray-200 text-gray-500 flex items-center justify-center hover:bg-gray-50">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                        <line x1="6" y1="6" x2="18" y2="18" />
                     </svg>
-                </div>
-                <div>
-                    <h1 class="text-[17px] font-extrabold text-[#1e293b] tracking-tight leading-none">Data Lembaga
-                    </h1>
-                    <p class="text-[11px] font-medium text-gray-400 mt-1">Madrasah Diniyah Takmiliyah</p>
-                </div>
+                </button>
             </div>
 
             <!-- Sidebar Navigation -->
-            <div class="flex-1 overflow-hidden py-2 flex flex-col justify-between">
+            <div class="flex-1 overflow-y-auto py-2 flex flex-col justify-between">
                 <nav>
                     <!-- Dasbor -->
                     <a href="{{ route('dashboard') }}"
@@ -206,9 +220,18 @@
         <main class="flex-1 flex flex-col min-w-0 overflow-hidden bg-[#f4f7f6]">
             <!-- Topbar -->
             <header
-                class="h-16 flex items-center justify-between px-8 bg-white border-b border-gray-200 z-10 sticky top-0 shrink-0">
+                class="min-h-16 flex flex-wrap items-center justify-between gap-3 px-4 sm:px-6 lg:px-8 py-3 bg-white border-b border-gray-200 z-10 sticky top-0 shrink-0">
+                <button type="button" @click="sidebarOpen = true"
+                    class="lg:hidden w-10 h-10 rounded-sm border border-gray-200 text-gray-600 flex items-center justify-center hover:bg-gray-50">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="6" x2="21" y2="6" />
+                        <line x1="3" y1="12" x2="21" y2="12" />
+                        <line x1="3" y1="18" x2="21" y2="18" />
+                    </svg>
+                </button>
                 <!-- Search -->
-                <div class="flex-1 flex">
+                <div class="order-3 w-full flex sm:order-none sm:w-auto sm:flex-1">
                     <div class="relative w-full max-w-md">
                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                             <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
@@ -224,8 +247,8 @@
                     </div>
                 </div>
 
-                <div class="flex items-center gap-6">
-                    <div class="flex items-center gap-4 text-gray-500">
+                <div class="ml-auto flex items-center gap-3 sm:gap-6">
+                    <div class="flex items-center gap-3 sm:gap-4 text-gray-500">
                         <!-- Notifications -->
                         <button class="relative hover:text-gray-700 transition-colors">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
@@ -249,11 +272,11 @@
                         </button>
                     </div>
 
-                    <div class="h-6 w-px bg-gray-200"></div>
+                    <div class="hidden sm:block h-6 w-px bg-gray-200"></div>
 
                     <!-- Profile -->
                     <div class="flex items-center gap-3">
-                        <div class="text-right">
+                        <div class="hidden sm:block text-right">
                             <p class="text-[13px] font-bold text-[#1e293b] leading-none">Admin Alpha</p>
                             <p class="text-[10px] font-bold text-gray-400 mt-1 tracking-wide">Super Admin</p>
                         </div>
@@ -264,17 +287,17 @@
             </header>
 
             <!-- Main Scrollable Area -->
-            <div class="flex-1 overflow-y-auto p-8 relative">
-                <div class="max-w-[1200px] mx-auto min-h-full flex flex-col">
+            <div class="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 relative">
+                <div class="w-full max-w-[1200px] mx-auto min-h-full flex flex-col">
                     <div class="flex-1">
                         @yield('content')
                     </div>
 
                     <!-- Footer -->
                     <div
-                        class="mt-8 pt-6 flex justify-between items-center text-[10px] font-bold text-gray-400 tracking-wider uppercase pb-4">
+                        class="mt-8 pt-6 flex flex-col lg:flex-row justify-between items-center gap-4 text-center lg:text-left text-[10px] font-bold text-gray-400 tracking-wider uppercase pb-4">
                         <p>© 2024 SISTEM INVENTARIS V2.4.1. HAK CIPTA DILINDUNGI UNDANG-UNDANG.</p>
-                        <div class="flex gap-6">
+                        <div class="flex flex-wrap justify-center lg:justify-end gap-x-6 gap-y-2">
                             <a href="#" class="hover:text-gray-600 transition-colors">SYARAT & KETENTUAN</a>
                             <a href="#" class="hover:text-gray-600 transition-colors">KEBIJAKAN PRIVASI</a>
                             <a href="#" class="hover:text-gray-600 transition-colors">PUSAT BANTUAN</a>
@@ -284,7 +307,7 @@
 
                 <!-- Floating Action Button -->
                 <button
-                    class="fixed bottom-8 right-8 w-14 h-14 bg-[#1c7b5b] hover:bg-[#155d44] text-white rounded-xl shadow-lg flex items-center justify-center transition-colors z-50">
+                    class="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 w-12 h-12 sm:w-14 sm:h-14 bg-[#1c7b5b] hover:bg-[#155d44] text-white rounded-xl shadow-lg flex items-center justify-center transition-colors z-50">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />

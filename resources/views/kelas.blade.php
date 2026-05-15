@@ -28,12 +28,12 @@
         </div>
 
         <!-- Page Header -->
-        <div class="flex justify-between items-start mb-8">
+        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-6 sm:mb-8">
             <div>
                 <h2 class="text-[28px] font-bold text-[#1e293b] mb-1.5 tracking-tight">Data Kelas</h2>
                 <p class="text-gray-500 text-[14px]">Informasi jumlah siswa per kelas berdasarkan jenis kelamin.</p>
             </div>
-            <div class="flex gap-3">
+            <div class="flex flex-wrap gap-3">
                 <a href="{{ route('kelas.export') }}"
                     class="bg-white border border-gray-200 text-[#1e293b] hover:bg-gray-50 px-5 py-2.5 rounded-sm font-semibold text-[13px] flex items-center gap-2 shadow-sm transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -172,7 +172,7 @@
                 class="relative w-full max-w-2xl bg-white rounded-md shadow-2xl overflow-hidden m-4 flex flex-col max-h-[85vh]">
 
                 <!-- Modal Header -->
-                <div class="px-6 py-4 border-b border-gray-100 flex justify-between items-center bg-gray-50/50 shrink-0">
+                <div class="px-6 py-4 border-b border-gray-100 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 bg-gray-50/50 shrink-0">
                     <div>
                         <h3 class="text-[18px] font-bold text-[#1e293b]" x-text="'Detail Data ' + selectedClass"></h3>
                         <p class="text-[12px] text-gray-500 mt-0.5"
