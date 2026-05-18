@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Guru;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\GuruImport;
+use App\Exports\GuruTemplateExport;
 
 class GuruController extends Controller
 {
@@ -82,5 +85,21 @@ class GuruController extends Controller
         };
 
         return response()->stream($callback, 200, $headers);
+    }
+
+    public function downloadTemplate()
+    {
+        return Excel::download(new GuruTemplateExport, 'template_import_guru.xlsx');
+    }
+
+    public function importCsv(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,xls,csv|max:5120',
+        ]);
+
+        Excel::import(new GuruImport, $request->file('file'));
+
+        return redirect()->back()->with('success', 'Data Guru berhasil diimport dari Excel.');
     }
 }

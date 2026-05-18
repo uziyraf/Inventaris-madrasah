@@ -65,6 +65,19 @@ Route::middleware(['auth', 'role:lembaga'])->group(function () {
     Route::get('/murid/export', [SantriController::class, 'exportCsv'])->name('murid.export');
     Route::get('/inventaris/export', [InventarisController::class, 'exportCsv'])->name('inventaris.export');
 
+    // Import Routes
+    Route::post('/guru/import', [GuruController::class, 'importCsv'])->name('guru.import');
+    Route::get('/guru/template', [GuruController::class, 'downloadTemplate'])->name('guru.template');
+    
+    Route::post('/pengurus/import', [PengurusController::class, 'importCsv'])->name('pengurus.import');
+    Route::get('/pengurus/template', [PengurusController::class, 'downloadTemplate'])->name('pengurus.template');
+    
+    Route::post('/murid/import', [SantriController::class, 'importCsv'])->name('murid.import');
+    Route::get('/murid/template', [SantriController::class, 'downloadTemplate'])->name('murid.template');
+    
+    Route::post('/inventaris/import', [InventarisController::class, 'importCsv'])->name('inventaris.import');
+    Route::get('/inventaris/template', [InventarisController::class, 'downloadTemplate'])->name('inventaris.template');
+
     // Laporan Routes
     Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan');
     Route::post('/laporan', [LaporanController::class, 'store'])->name('laporan.store');

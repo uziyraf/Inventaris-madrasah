@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Pengurus;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\PengurusImport;
+use App\Exports\PengurusTemplateExport;
 
 class PengurusController extends Controller
 {
@@ -71,5 +74,21 @@ class PengurusController extends Controller
         };
 
         return response()->stream($callback, 200, $headers);
+    }
+
+    public function downloadTemplate()
+    {
+        return Excel::download(new PengurusTemplateExport, 'template_import_pengurus.xlsx');
+    }
+
+    public function importCsv(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,xls,csv|max:5120',
+        ]);
+
+        Excel::import(new PengurusImport, $request->file('file'));
+
+        return redirect()->back()->with('success', 'Data Pengurus berhasil diimport dari Excel.');
     }
 }

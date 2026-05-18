@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Santri;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\SantriImport;
+use App\Exports\SantriTemplateExport;
 
 class SantriController extends Controller
 {
@@ -86,5 +89,21 @@ class SantriController extends Controller
         };
 
         return response()->stream($callback, 200, $headers);
+    }
+
+    public function downloadTemplate()
+    {
+        return Excel::download(new SantriTemplateExport, 'template_import_murid.xlsx');
+    }
+
+    public function importCsv(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,xls,csv|max:5120',
+        ]);
+
+        Excel::import(new SantriImport, $request->file('file'));
+
+        return redirect()->back()->with('success', 'Data Murid berhasil diimport dari Excel.');
     }
 }
