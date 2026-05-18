@@ -7,10 +7,26 @@
             <p class="text-gray-500 text-[14px]">Kelola staf institusi dan kontrol akses sistem untuk alur inventaris.</p>
         </div>
         <div class="flex flex-wrap gap-3">
-            <a href="{{ route('pengurus.export') }}" class="bg-white border border-gray-200 text-[#1c7b5b] hover:bg-gray-50 px-5 py-2.5 rounded-sm font-semibold text-[13px] flex items-center gap-2 shadow-sm transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <a href="{{ route('pengurus.export') }}"
+                class="bg-white border border-gray-200 text-[#1e293b] hover:bg-gray-50 px-5 py-2.5 rounded-sm font-semibold text-[13px] flex items-center gap-2 shadow-sm transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
                 Ekspor CSV
             </a>
+            <button onclick="toggleModal('modalImport')"
+                class="bg-white border border-gray-200 text-[#1e293b] hover:bg-gray-50 px-5 py-2.5 rounded-sm font-semibold text-[13px] flex items-center gap-2 shadow-sm transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="17 8 12 3 7 8" />
+                    <line x1="12" y1="3" x2="12" y2="15" />
+                </svg>
+                Import Excel
+            </button>
             <button onclick="toggleModal('modalTambah')" class="bg-[#1c7b5b] hover:bg-[#155d44] text-white px-5 py-2.5 rounded-sm font-semibold text-[13px] flex items-center gap-2 shadow-sm transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                 Pengurus Baru
@@ -230,12 +246,71 @@
         </div>
     </div>
 
+    {{-- Modal Import Excel --}}
+    <div id="modalImport" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-sm w-full max-w-lg p-8 shadow-xl">
+            <h3 class="text-lg font-bold mb-2 text-gray-800">Import Data Pengurus</h3>
+            <p class="text-sm text-gray-500 mb-6">Pilih file Excel (.xlsx) yang sudah sesuai dengan template. Jika nama dan jabatan sama, data akan diperbarui.</p>
+            
+            <form action="{{ route('pengurus.import') }}" method="POST" enctype="multipart/form-data" class="flex flex-col gap-4">
+                @csrf
+                <div class="mb-2">
+                    <a href="{{ route('pengurus.template') }}" class="text-[#1c7b5b] hover:text-[#155d44] font-semibold text-sm flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="7 10 12 15 17 10" />
+                            <line x1="12" y1="15" x2="12" y2="3" />
+                        </svg>
+                        Download Template Excel
+                    </a>
+                </div>
+
+                <div>
+                    <label class="block text-[11px] font-bold text-gray-500 uppercase mb-2">File Excel (.xlsx)</label>
+                    <div class="border-2 border-dashed border-gray-200 rounded-sm p-4 text-center hover:border-[#1c7b5b] transition-colors cursor-pointer relative">
+                        <input type="file" name="file" required accept=".xlsx, .xls, .csv"
+                            class="absolute inset-0 opacity-0 cursor-pointer w-full h-full" id="importFileInput">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="17 8 12 3 7 8"/>
+                            <line x1="12" y1="3" x2="12" y2="15"/>
+                        </svg>
+                        <p class="text-[12px] text-gray-400 font-medium filename-display">Klik atau seret file Excel ke sini</p>
+                    </div>
+                </div>
+
+                <div class="flex justify-end gap-3 mt-4">
+                    <button type="button" onclick="toggleModal('modalImport')"
+                        class="px-4 py-2 text-sm font-bold text-gray-400 uppercase hover:text-gray-600 transition-colors">Batal</button>
+                    <button type="submit"
+                        class="bg-[#1c7b5b] text-white px-6 py-2 rounded-sm font-bold text-sm uppercase hover:bg-[#155d44] transition-colors shadow-sm">
+                        Import
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script>
         function toggleModal(id) {
             const modal = document.getElementById(id);
             modal.classList.toggle('hidden');
             modal.classList.toggle('flex');
         }
+
+        // Show filename on file pick for import
+        document.addEventListener('DOMContentLoaded', function() {
+            const importFileInput = document.getElementById('importFileInput');
+            if (importFileInput) {
+                const label = importFileInput.closest('.border-dashed');
+                importFileInput.addEventListener('change', function() {
+                    if (this.files.length > 0) {
+                        label.querySelector('.filename-display').textContent = this.files[0].name;
+                    }
+                });
+            }
+        });
 
         function editPengurus(data) {
             const form = document.getElementById('formEdit');

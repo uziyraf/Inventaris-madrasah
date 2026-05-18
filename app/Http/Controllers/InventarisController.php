@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Inventaris;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\InventarisImport;
+use App\Exports\InventarisTemplateExport;
 
 class InventarisController extends Controller
 {
@@ -86,5 +89,21 @@ class InventarisController extends Controller
         };
 
         return response()->stream($callback, 200, $headers);
+    }
+
+    public function downloadTemplate()
+    {
+        return Excel::download(new InventarisTemplateExport, 'template_import_inventaris.xlsx');
+    }
+
+    public function importCsv(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,xls,csv|max:5120',
+        ]);
+
+        Excel::import(new InventarisImport, $request->file('file'));
+
+        return redirect()->back()->with('success', 'Data Inventaris berhasil diimport dari Excel.');
     }
 }
