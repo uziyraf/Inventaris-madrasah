@@ -14,12 +14,12 @@ return new class extends Migration {
             $table->id();
             $table->string('no_induk')->unique();
             $table->string('nama_santri');
-            $table->string('tempat_lahir');
-            $table->date('tanggal_lahir');
-            $table->text('alamat');
-            $table->string('kelas');
-            $table->string('nama_orangtua');
-            $table->string('asal_madin');
+            $table->string('tempat_lahir')->nullable();
+            $table->date('tanggal_lahir')->nullable();
+            $table->text('alamat')->nullable();
+            $table->string('kelas')->nullable();
+            $table->string('nama_orangtua')->nullable();
+            $table->string('asal_madin')->nullable();
             $table->timestamps();
         });
     }
