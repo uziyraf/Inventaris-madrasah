@@ -180,21 +180,23 @@
                                 </div>
                             </td>
                             <td class="px-6 py-5">
-                                <p class="text-[13px] text-gray-700 font-medium">{{ $santri->tempat_lahir }},</p>
-                                <p class="text-[12px] text-gray-500 mt-0.5">
-                                    {{ \Carbon\Carbon::parse($santri->tanggal_lahir)->translatedFormat('d M Y') }}
-                                </p>
-                            </td>
-                            <td class="px-6 py-5">
-                                <p class="text-[13px] text-gray-700 truncate max-w-[120px]" title="{{ $santri->alamat }}">
-                                    {{ $santri->alamat }}
-                                </p>
+                                <p class="text-[13px] text-gray-700 font-medium">{{ $santri->tempat_lahir ?? '-' }}{{ $santri->tanggal_lahir ? ',' : '' }}</p>
+                                @if($santri->tanggal_lahir)
+                                    <p class="text-[12px] text-gray-500 mt-0.5">
+                                        {{ \Carbon\Carbon::parse($santri->tanggal_lahir)->translatedFormat('d M Y') }}
+                                    </p>
+                                @endif
                             </td>
                             <td class="px-6 py-5">
                                 <span
                                     class="bg-gray-100 text-gray-600 text-[10px] font-bold px-2 py-1 rounded-sm uppercase tracking-wider">
                                     {{ $santri->jenis_kelamin == 'Laki-laki' ? 'L' : 'P' }}
                                 </span>
+                            </td>
+                            <td class="px-6 py-5">
+                                <p class="text-[13px] text-gray-700 truncate max-w-[120px]" title="{{ $santri->alamat }}">
+                                    {{ $santri->alamat }}
+                                </p>
                             </td>
                             <td class="px-6 py-5">
                                 <span class="text-[13px] text-gray-700 font-medium font-mono">{{ $santri->no_induk }}</span>
