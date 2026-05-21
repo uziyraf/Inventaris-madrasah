@@ -48,7 +48,9 @@ class SantriController extends Controller
             'asal_madin' => 'required',
         ]);
 
-        Santri::create($request->all());
+        Santri::create(array_merge($request->all(), [
+            'lembaga_id' => auth()->user()->lembaga_id,
+        ]));
 
         return redirect()->back()->with('success', 'Data santri berhasil ditambahkan');
     }

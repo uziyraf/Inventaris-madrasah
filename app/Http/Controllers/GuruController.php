@@ -22,7 +22,6 @@ class GuruController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'lembaga_id' => auth()->user()->lembaga_id,
             'nik' => 'required|unique:gurus',
             'nama_guru' => 'required',
             'tempat_lahir' => 'required',
@@ -33,7 +32,9 @@ class GuruController extends Controller
             'tahun_mulai_mengajar' => 'required|digits:4',
         ]);
 
-        Guru::create($request->all());
+        Guru::create(array_merge($request->all(), [
+            'lembaga_id' => auth()->user()->lembaga_id,
+        ]));
         return redirect()->back()->with('success', 'Data guru berhasil ditambahkan');
     }
 

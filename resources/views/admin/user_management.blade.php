@@ -121,19 +121,22 @@
                         </select>
                     </div>
 
-                    <!-- Dropdown Lembaga hanya muncul jika role == lembaga -->
+                    <!-- Nama Lembaga hanya muncul jika role == lembaga -->
                     <div x-show="selectedRole === 'lembaga'">
-                        <label class="block text-[11px] font-bold text-gray-500 uppercase mb-2">Pilih Lembaga /
+                        <label class="block text-[11px] font-bold text-gray-500 uppercase mb-2">Nama Lembaga /
                             Sekolah</label>
-                        <select name="lembaga_id"
+                        <input type="text" name="nama_madrasah" list="daftar-lembaga"
+                            value="{{ old('nama_madrasah') }}"
+                            placeholder="Masukkan nama lembaga / sekolah"
                             class="w-full border border-gray-200 rounded-sm px-3 py-2 text-sm focus:outline-none focus:border-[#1c7b5b]"
                             :required="selectedRole === 'lembaga'">
-                            <option value="">-- Pilih Lembaga --</option>
+                        <datalist id="daftar-lembaga">
                             @foreach($lembagas as $lembaga)
-                                <option value="{{ $lembaga->id }}">{{ $lembaga->nama_madrasah ?? 'Lembaga Belum Dinamai' }}
-                                </option>
+                                @if($lembaga->nama_madrasah)
+                                    <option value="{{ $lembaga->nama_madrasah }}"></option>
+                                @endif
                             @endforeach
-                        </select>
+                        </datalist>
                     </div>
 
                     <div class="pt-4 flex justify-end gap-3 border-t border-gray-100 mt-6">
