@@ -92,23 +92,52 @@
 
     <div class="bg-white rounded-sm shadow-sm border border-gray-200 mb-8">
         <div class="p-4 border-b border-gray-100 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 bg-white">
-            <div class="flex gap-3 items-center">
-                <button
-                    class="flex items-center gap-2 text-[11px] font-bold text-[#1e293b] border border-gray-200 rounded-sm px-3 py-1.5 hover:bg-gray-50 transition-colors uppercase tracking-wider">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="4" y1="21" x2="4" y2="14" />
-                        <line x1="4" y1="10" x2="4" y2="3" />
-                        <line x1="12" y1="21" x2="12" y2="12" />
-                        <line x1="12" y1="8" x2="12" y2="3" />
-                        <line x1="20" y1="21" x2="20" y2="16" />
-                        <line x1="20" y1="12" x2="20" y2="3" />
-                        <line x1="1" y1="14" x2="7" y2="14" />
-                        <line x1="9" y1="8" x2="15" y2="8" />
-                        <line x1="17" y1="16" x2="23" y2="16" />
-                    </svg>
-                    FILTER: SEMUA KELAS
-                </button>
+            <div class="flex gap-3 items-center relative">
+                <div class="relative" x-data="{ open: false }">
+                    <button @click="open = !open" type="button"
+                        class="flex items-center gap-2 text-[11px] font-bold text-[#1e293b] border border-gray-200 rounded-sm px-3 py-1.5 hover:bg-gray-50 transition-colors uppercase tracking-wider">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="21" x2="4" y2="14" />
+                            <line x1="4" y1="10" x2="4" y2="3" />
+                            <line x1="12" y1="21" x2="12" y2="12" />
+                            <line x1="12" y1="8" x2="12" y2="3" />
+                            <line x1="20" y1="21" x2="20" y2="16" />
+                            <line x1="20" y1="12" x2="20" y2="3" />
+                            <line x1="1" y1="14" x2="7" y2="14" />
+                            <line x1="9" y1="8" x2="15" y2="8" />
+                            <line x1="17" y1="16" x2="23" y2="16" />
+                        </svg>
+                        FILTER: {{ $selectedKelas ? $selectedKelas : 'SEMUA KELAS' }}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            :class="open ? 'rotate-180' : ''" class="transition-transform">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+
+                    {{-- Dropdown menu --}}
+                    <div x-show="open" @click.away="open = false"
+                        x-transition:enter="transition ease-out duration-100"
+                        x-transition:enter-start="opacity-0 scale-95"
+                        x-transition:enter-end="opacity-100 scale-100"
+                        x-transition:leave="transition ease-in duration-75"
+                        x-transition:leave-start="opacity-100 scale-100"
+                        x-transition:leave-end="opacity-0 scale-95"
+                        class="absolute top-full left-0 mt-1 bg-white border border-gray-200 rounded-sm shadow-lg z-50 min-w-[180px] py-1"
+                        style="display: none;">
+                        <a href="{{ route('murid') }}"
+                            class="block px-4 py-2 text-[12px] font-semibold hover:bg-[#f0fbf7] hover:text-[#1c7b5b] transition-colors {{ !$selectedKelas ? 'bg-[#f0fbf7] text-[#1c7b5b]' : 'text-gray-700' }}">
+                            Semua Kelas
+                        </a>
+                        @foreach($kelasList as $kelas)
+                            <a href="{{ route('murid', ['kelas' => $kelas]) }}"
+                                class="block px-4 py-2 text-[12px] font-semibold hover:bg-[#f0fbf7] hover:text-[#1c7b5b] transition-colors {{ $selectedKelas == $kelas ? 'bg-[#f0fbf7] text-[#1c7b5b]' : 'text-gray-700' }}">
+                                Kelas {{ $kelas }}
+                            </a>
+                        @endforeach
+                    </div>
+                </div>
             </div>
 
             <p class="text-[10px] text-gray-400 font-bold tracking-wider uppercase">MENAMPILKAN
@@ -151,21 +180,23 @@
                                 </div>
                             </td>
                             <td class="px-6 py-5">
-                                <p class="text-[13px] text-gray-700 font-medium">{{ $santri->tempat_lahir }},</p>
-                                <p class="text-[12px] text-gray-500 mt-0.5">
-                                    {{ \Carbon\Carbon::parse($santri->tanggal_lahir)->translatedFormat('d M Y') }}
-                                </p>
-                            </td>
-                            <td class="px-6 py-5">
-                                <p class="text-[13px] text-gray-700 truncate max-w-[120px]" title="{{ $santri->alamat }}">
-                                    {{ $santri->alamat }}
-                                </p>
+                                <p class="text-[13px] text-gray-700 font-medium">{{ $santri->tempat_lahir ?? '-' }}{{ $santri->tanggal_lahir ? ',' : '' }}</p>
+                                @if($santri->tanggal_lahir)
+                                    <p class="text-[12px] text-gray-500 mt-0.5">
+                                        {{ \Carbon\Carbon::parse($santri->tanggal_lahir)->translatedFormat('d M Y') }}
+                                    </p>
+                                @endif
                             </td>
                             <td class="px-6 py-5">
                                 <span
                                     class="bg-gray-100 text-gray-600 text-[10px] font-bold px-2 py-1 rounded-sm uppercase tracking-wider">
                                     {{ $santri->jenis_kelamin == 'Laki-laki' ? 'L' : 'P' }}
                                 </span>
+                            </td>
+                            <td class="px-6 py-5">
+                                <p class="text-[13px] text-gray-700 truncate max-w-[120px]" title="{{ $santri->alamat }}">
+                                    {{ $santri->alamat }}
+                                </p>
                             </td>
                             <td class="px-6 py-5">
                                 <span class="text-[13px] text-gray-700 font-medium font-mono">{{ $santri->no_induk }}</span>

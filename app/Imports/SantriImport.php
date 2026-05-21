@@ -4,100 +4,200 @@ namespace App\Imports;
 
 use App\Models\Santri;
 use Maatwebsite\Excel\Concerns\ToModel;
-use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\WithStartRow;
 use PhpOffice\PhpSpreadsheet\Shared\Date as ExcelDate;
+use Illuminate\Support\Facades\Log;
 
-class SantriImport implements ToModel, WithHeadingRow
+class SantriImport implements ToModel, WithStartRow
 {
+    /**
+     * Skip the first header row, start reading data from row 2.
+     */
+    public function startRow(): int
+    {
+        return 2;
+    }
+
     public function model(array $row)
     {
         $lembaga_id = auth()->user()->lembaga_id;
 
-        // Get No Induk - try multiple possible heading formats
-        $noInduk = $this->getVal($row, ['no_induk', 'no induk', 'noinduk', 'nomor_induk']);
-        if (empty($noInduk)) {
+        // Column positions based on user's actual Excel format:
+        // 0: NO.
+        // 1: NAMA SANTRI
+        // 2: TEMPAT, TANGGAL LAHIR (combined)
+        // 3: ALAMAT
+        // 4: NO. INDUK
+        // 5: KELAS
+        // 6: NAMA ORANG TUA
+        // 7: ASAL MADIN
+
+        $namaSantri = trim((string) ($row[1] ?? ''));
+        $noInduk    = trim((string) ($row[4] ?? ''));
+
+        // Skip empty rows
+        if (empty($namaSantri) || empty($noInduk)) {
             return null;
         }
 
-        // Parse tanggal_lahir - handle both text 'YYYY-MM-DD' and Excel numeric date
-        $tanggalRaw = $this->getVal($row, [
-            'tanggal_lahir_yyyy_mm_dd', 'tanggal_lahir', 'tgl_lahir',
-            'tanggal lahir (yyyy-mm-dd)', 'tanggal lahir'
-        ]);
-        $tanggalLahir = $this->parseDate($tanggalRaw);
+        // Parse combined "TEMPAT, TANGGAL LAHIR"
+        $rawTTL = $row[2] ?? '';
+        
+        // Log raw value for debugging
+        Log::info("Import Santri [{$namaSantri}] - Raw TTL value: " . var_export($rawTTL, true) . " - type: " . gettype($rawTTL));
 
-        // Normalize jenis_kelamin
-        $jenisRaw = strtolower(trim((string) $this->getVal($row, [
-            'jenis_kelamin_laki_lakiperempuan', 'jenis_kelamin',
-            'jenis kelamin (laki-laki/perempuan)', 'jenis kelamin'
-        ]) ?? ''));
-        if (in_array($jenisRaw, ['laki-laki', 'laki laki', 'l', 'pria', 'male'])) {
-            $jenisKelamin = 'Laki-laki';
-        } elseif (in_array($jenisRaw, ['perempuan', 'p', 'wanita', 'female'])) {
-            $jenisKelamin = 'Perempuan';
-        } else {
-            $jenisKelamin = null;
+        // If Excel stored the date as a numeric serial number in the TTL column
+        if (is_numeric($rawTTL)) {
+            try {
+                $date = ExcelDate::excelToDateTimeObject((float) $rawTTL);
+                $tanggalLahir = $date->format('Y-m-d');
+                // Validate: tanggal lahir should be in the past and reasonable (1950-2020)
+                $year = (int) $date->format('Y');
+                if ($year < 1950 || $year > 2020) {
+                    $tanggalLahir = null;
+                }
+                Log::info("  -> Numeric date parsed: {$tanggalLahir}");
+                return Santri::updateOrCreate(
+                    ['no_induk' => $noInduk, 'lembaga_id' => $lembaga_id],
+                    [
+                        'nama_santri'   => $namaSantri,
+                        'tempat_lahir'  => null,
+                        'tanggal_lahir' => $tanggalLahir,
+                        'jenis_kelamin' => null,
+                        'alamat'        => trim((string) ($row[3] ?? '')) ?: null,
+                        'kelas'         => trim((string) ($row[5] ?? '')) ?: null,
+                        'status'        => 'Aktif',
+                        'nama_orangtua' => trim((string) ($row[6] ?? '')) ?: null,
+                        'asal_madin'    => trim((string) ($row[7] ?? '')) ?: null,
+                    ]
+                );
+            } catch (\Exception $e) {
+                // Fall through to text parsing
+            }
         }
+
+        [$tempatLahir, $tanggalLahir] = $this->parseTempatTanggal((string) $rawTTL);
+        Log::info("  -> Parsed: tempat={$tempatLahir}, tanggal={$tanggalLahir}");
 
         return Santri::updateOrCreate(
             [
-                'no_induk'   => trim((string) $noInduk),
+                'no_induk'   => $noInduk,
                 'lembaga_id' => $lembaga_id,
             ],
             [
-                'nama_santri'   => trim((string) $this->getVal($row, ['nama_santri', 'nama santri', 'nama']) ?? ''),
-                'tempat_lahir'  => trim((string) $this->getVal($row, ['tempat_lahir', 'tempat lahir']) ?? '') ?: null,
+                'nama_santri'   => $namaSantri,
+                'tempat_lahir'  => $tempatLahir,
                 'tanggal_lahir' => $tanggalLahir,
-                'jenis_kelamin' => $jenisKelamin,
-                'alamat'        => trim((string) $this->getVal($row, ['alamat']) ?? '') ?: null,
-                'kelas'         => trim((string) $this->getVal($row, ['kelas']) ?? '') ?: null,
-                'status'        => trim((string) $this->getVal($row, ['status_aktiftidak_aktif', 'status']) ?? '') ?: 'Aktif',
-                'nama_orangtua' => trim((string) $this->getVal($row, ['nama_orang_tua', 'nama_orangtua', 'nama orang tua']) ?? '') ?: null,
-                'asal_madin'    => trim((string) $this->getVal($row, ['asal_madin', 'asal madin']) ?? '') ?: null,
+                'jenis_kelamin' => null,
+                'alamat'        => trim((string) ($row[3] ?? '')) ?: null,
+                'kelas'         => trim((string) ($row[5] ?? '')) ?: null,
+                'status'        => 'Aktif',
+                'nama_orangtua' => trim((string) ($row[6] ?? '')) ?: null,
+                'asal_madin'    => trim((string) ($row[7] ?? '')) ?: null,
             ]
         );
     }
 
     /**
-     * Try multiple possible key names and return the first found value.
+     * Parse "TEMPAT, TANGGAL LAHIR" combined column.
+     * Handles: "Pasuruan, 02 Mei 2004" or "Pasuruan 15 September 2011"
+     * Also handles: "Pasuruan, 03-06-2012" or "Pasuruan 12/07/2011"
      */
-    private function getVal(array $row, array $keys): mixed
+    private function parseTempatTanggal(string $combined): array
     {
-        foreach ($keys as $key) {
-            if (isset($row[$key]) && $row[$key] !== null && $row[$key] !== '') {
-                return $row[$key];
+        $combined = trim($combined);
+
+        if (empty($combined)) {
+            return [null, null];
+        }
+
+        // Try 1: Split by comma (e.g. "Pasuruan, 15 September 2011" or "Pasuruan, 03-06-2012")
+        if (str_contains($combined, ',')) {
+            $parts = explode(',', $combined, 2);
+            $tempatLahir = trim($parts[0]) ?: null;
+            $tanggalStr  = isset($parts[1]) ? trim($parts[1]) : '';
+            $tanggalLahir = $this->parseDate($tanggalStr);
+            if ($tanggalLahir) {
+                return [$tempatLahir, $tanggalLahir];
             }
         }
-        return null;
+
+        // Try 2: No comma — detect "Pasuruan 15 September 2011" pattern with month names
+        $months = 'Januari|Februari|Maret|April|Mei|Juni|Juli|Agustus|September|Oktober|November|Desember'
+            . '|January|February|March|April|May|June|July|August|September|October|November|December';
+        $pattern = '/^(.+?)\s+(\d{1,2}\s+(?:' . $months . ')\s+\d{4})$/iu';
+
+        if (preg_match($pattern, $combined, $matches)) {
+            $tempatLahir = trim($matches[1]) ?: null;
+            $tanggalLahir = $this->parseDate(trim($matches[2]));
+            return [$tempatLahir, $tanggalLahir];
+        }
+
+        // Try 3: "Pasuruan 03-06-2012" or "Pasuruan 12/07/2011" (DD-MM-YYYY or DD/MM/YYYY)
+        $pattern2 = '/^(.+?)\s+(\d{1,2}[\-\/]\d{1,2}[\-\/]\d{4})$/';
+        if (preg_match($pattern2, $combined, $matches)) {
+            $tempatLahir = trim($matches[1]) ?: null;
+            $tanggalLahir = $this->parseDate(trim($matches[2]));
+            return [$tempatLahir, $tanggalLahir];
+        }
+
+        // Try 4: Maybe it's just the date alone (no tempat)
+        $tanggalLahir = $this->parseDate($combined);
+        if ($tanggalLahir) {
+            return [null, $tanggalLahir];
+        }
+
+        // Fallback: treat entire value as tempat_lahir
+        return [$combined, null];
     }
 
     /**
-     * Parse a date value that may be a string or an Excel numeric date.
+     * Convert various date formats to 'Y-m-d' for MySQL.
+     * Handles: "02 Mei 2004", "02 May 2004", "2004-05-02", "03-06-2012", "12/07/2011"
      */
-    private function parseDate(mixed $value): ?string
+    private function parseDate(string $dateStr): ?string
     {
-        if (empty($value)) {
+        $dateStr = trim($dateStr);
+
+        if (empty($dateStr)) {
             return null;
         }
 
-        // If it's already a string formatted as date
-        if (is_string($value) && preg_match('/^\d{4}-\d{2}-\d{2}$/', trim($value))) {
-            return trim($value);
+        // Map Indonesian month names to English (using word boundaries to prevent corruption)
+        $indonesian = [
+            '/\bJanuari\b/i'   => 'January',
+            '/\bFebruari\b/i'  => 'February',
+            '/\bMaret\b/i'     => 'March',
+            '/\bMei\b/i'       => 'May',
+            '/\bJuni\b/i'      => 'June',
+            '/\bJuli\b/i'      => 'July',
+            '/\bAgustus\b/i'   => 'August',
+            '/\bOktober\b/i'   => 'October',
+            '/\bNopember\b/i'  => 'November',
+            '/\bDesember\b/i'  => 'December',
+        ];
+        $dateStr = preg_replace(array_keys($indonesian), array_values($indonesian), $dateStr);
+
+        // Handle DD-MM-YYYY or DD/MM/YYYY format explicitly
+        if (preg_match('/^(\d{1,2})[\-\/](\d{1,2})[\-\/](\d{4})$/', $dateStr, $m)) {
+            $day   = (int) $m[1];
+            $month = (int) $m[2];
+            $year  = (int) $m[3];
+            // Validate ranges
+            if ($month >= 1 && $month <= 12 && $day >= 1 && $day <= 31 && $year >= 1950 && $year <= 2020) {
+                return sprintf('%04d-%02d-%02d', $year, $month, $day);
+            }
+            return null;
         }
 
-        // If it's a numeric value (Excel stores dates as serial numbers)
-        if (is_numeric($value)) {
-            try {
-                $date = ExcelDate::excelToDateTimeObject((float) $value);
-                return $date->format('Y-m-d');
-            } catch (\Exception $e) {
+        // Try parsing with DateTime
+        try {
+            $date = new \DateTime($dateStr);
+            $year = (int) $date->format('Y');
+            // Sanity check: tanggal lahir harus antara 1950-2020
+            if ($year < 1950 || $year > 2020) {
                 return null;
             }
-        }
-
-        // Try parsing any other string date format
-        try {
-            $date = new \DateTime((string) $value);
             return $date->format('Y-m-d');
         } catch (\Exception $e) {
             return null;

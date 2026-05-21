@@ -10,12 +10,28 @@ use App\Exports\SantriTemplateExport;
 
 class SantriController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $santris = Santri::paginate(10);
+        $lembaga_id = auth()->user()->lembaga_id;
 
-        // Komen dulu return view-nya
-        return view('murid', compact('santris'));        // Ganti jadi ini buat nampilin data mentah:
+        // Get all unique kelas values for the filter dropdown
+        $kelasList = Santri::where('lembaga_id', $lembaga_id)
+            ->whereNotNull('kelas')
+            ->where('kelas', '!=', '')
+            ->distinct()
+            ->orderBy('kelas')
+            ->pluck('kelas');
+
+        // Build query with optional kelas filter
+        $query = Santri::where('lembaga_id', $lembaga_id);
+        $selectedKelas = $request->query('kelas');
+        if ($selectedKelas) {
+            $query->where('kelas', $selectedKelas);
+        }
+
+        $santris = $query->latest()->paginate(10)->appends(['kelas' => $selectedKelas]);
+
+        return view('murid', compact('santris', 'kelasList', 'selectedKelas'));
     }
 
     public function store(Request $request)
@@ -32,7 +48,9 @@ class SantriController extends Controller
             'asal_madin' => 'required',
         ]);
 
-        Santri::create($request->all());
+        Santri::create(array_merge($request->all(), [
+            'lembaga_id' => auth()->user()->lembaga_id,
+        ]));
 
         return redirect()->back()->with('success', 'Data santri berhasil ditambahkan');
     }

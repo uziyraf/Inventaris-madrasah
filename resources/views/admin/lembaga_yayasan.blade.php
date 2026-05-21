@@ -23,21 +23,10 @@
         </div>
 
         <!-- Page Header -->
-        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-6 sm:mb-8">
+        <div class="mb-6 sm:mb-8">
             <div>
                 <h2 class="text-[28px] font-bold text-[#1e293b] mb-1.5 tracking-tight">Daftar Lembaga Naungan</h2>
                 <p class="text-gray-500 text-[14px]">Pantau informasi dan legalitas seluruh madrasah di bawah yayasan.</p>
-            </div>
-            <div class="flex flex-wrap gap-3">
-                <button
-                    class="bg-[#1c7b5b] hover:bg-[#155d44] text-white px-5 py-2.5 rounded-sm font-semibold text-[13px] flex items-center gap-2 shadow-sm transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="12" y1="5" x2="12" y2="19" />
-                        <line x1="5" y1="12" x2="19" y2="12" />
-                    </svg>
-                    Tambah Lembaga Baru
-                </button>
             </div>
         </div>
 
@@ -107,7 +96,7 @@
         </div>
 
         <!-- Modal Popup Detail Lembaga -->
-        <div x-show="modalOpen" class="fixed inset-0 z-[100] flex items-center justify-center" style="display: none;"
+        <div x-show="modalOpen" class="fixed inset-0 z-100 flex items-center justify-center" style="display: none;"
             x-cloak>
             <!-- Backdrop -->
             <div x-show="modalOpen" x-transition.opacity class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"
@@ -253,15 +242,7 @@
                 </div>
 
                 <!-- Modal Footer -->
-                <div class="px-8 py-4 border-t border-gray-100 bg-gray-50/50 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 shrink-0">
-                    <button class="text-[12px] font-bold text-[#1c7b5b] hover:underline flex items-center gap-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
-                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
-                        </svg>
-                        Edit Data Lembaga Ini
-                    </button>
+                <div class="px-8 py-4 border-t border-gray-100 bg-gray-50/50 flex flex-col sm:flex-row sm:justify-end sm:items-center gap-3 shrink-0">
                     <button @click="modalOpen = false"
                         class="px-6 py-2.5 text-[13px] font-bold text-white bg-gray-800 hover:bg-gray-900 rounded-sm transition-colors shadow-sm">Tutup
                         Panel</button>

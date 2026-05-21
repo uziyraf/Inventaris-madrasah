@@ -113,7 +113,7 @@
                                 <p class="text-[12px] text-gray-400">
                                     {{ \Carbon\Carbon::parse($guru->tanggal_lahir)->translatedFormat('d M Y') }}</p>
                             </td>
-                            <td class="px-6 py-5 truncate max-w-[150px]" title="{{ $guru->alamat }}">{{ $guru->alamat }}</td>
+                            <td class="px-6 py-5 truncate max-w-37.5" title="{{ $guru->alamat }}">{{ $guru->alamat }}</td>
                             <td class="px-6 py-5">
                                 @if($guru->status == 'Aktif')
                                     <span class="bg-green-100 text-green-700 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Aktif</span>
