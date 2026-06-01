@@ -100,10 +100,14 @@ Route::middleware(['auth', 'role:yayasan'])->prefix('admin')->name('admin.')->gr
 
     // Rekap Data Gabungan
     Route::get('/guru', [RekapDataController::class, 'guru'])->name('guru');
+    Route::get('/guru/export', [RekapDataController::class, 'exportGuruCsv'])->name('guru.export');
     Route::get('/murid', [RekapDataController::class, 'murid'])->name('murid');
+    Route::get('/murid/export', [RekapDataController::class, 'exportMuridCsv'])->name('murid.export');
     Route::get('/kelas', [RekapDataController::class, 'kelas'])->name('kelas');
     Route::get('/pengurus', [RekapDataController::class, 'pengurus'])->name('pengurus');
+    Route::get('/pengurus/export', [RekapDataController::class, 'exportPengurusCsv'])->name('pengurus.export');
     Route::get('/inventaris', [RekapDataController::class, 'inventaris'])->name('inventaris');
+    Route::get('/inventaris/export', [RekapDataController::class, 'exportCsv'])->name('inventaris.export');
 
     // Laporan Yayasan
     Route::get('/laporan', [LaporanYayasanController::class, 'index'])->name('laporan');

@@ -85,4 +85,154 @@ class RekapDataController extends Controller
 
         return view('admin.inventaris', compact('inventaris'));
     }
+
+    // Export Semua Inventaris (Yayasan)
+    public function exportCsv()
+    {
+        $inventaris = Inventaris::with('lembaga')->latest()->get();
+
+        $headers = [
+            "Content-type"        => "text/csv",
+            "Content-Disposition" => "attachment; filename=laporan_inventaris_yayasan.csv",
+            "Pragma"              => "no-cache",
+            "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
+            "Expires"             => "0"
+        ];
+
+        $columns = ['Asal Lembaga', 'Nama Aset', 'Kategori', 'Jumlah', 'Kondisi', 'Keterangan'];
+
+        $callback = function() use($inventaris, $columns) {
+            $file = fopen('php://output', 'w');
+            
+            // Menulis Header
+            fputcsv($file, $columns);
+
+            foreach ($inventaris as $item) {
+                fputcsv($file, [
+                    $item->lembaga ? $item->lembaga->nama_madrasah : 'Global',
+                    $item->aset,
+                    $item->kategori,
+                    $item->jumlah,
+                    $item->kondisi,
+                    $item->keterangan ?? '-',
+                ]);
+            }
+            fclose($file);
+        };
+
+        return response()->stream($callback, 200, $headers);
+    }
+
+    // Export Semua Guru (Yayasan)
+    public function exportGuruCsv()
+    {
+        $gurus = Guru::with('lembaga')->latest()->get();
+
+        $headers = [
+            "Content-type"        => "text/csv",
+            "Content-Disposition" => "attachment; filename=laporan_guru_yayasan.csv",
+            "Pragma"              => "no-cache",
+            "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
+            "Expires"             => "0"
+        ];
+
+        $columns = ['Asal Lembaga', 'NIK', 'Nama Guru', 'Tempat Lahir', 'Tanggal Lahir', 'Jenis Kelamin', 'Alamat', 'Tahun Mulai Mengajar', 'Status'];
+
+        $callback = function() use($gurus, $columns) {
+            $file = fopen('php://output', 'w');
+            fputcsv($file, $columns);
+
+            foreach ($gurus as $guru) {
+                fputcsv($file, [
+                    $guru->lembaga ? $guru->lembaga->nama_madrasah : 'Global',
+                    $guru->nik,
+                    $guru->nama_guru,
+                    $guru->tempat_lahir,
+                    $guru->tanggal_lahir,
+                    $guru->jenis_kelamin,
+                    $guru->alamat,
+                    $guru->tahun_mulai_mengajar,
+                    $guru->status,
+                ]);
+            }
+            fclose($file);
+        };
+
+        return response()->stream($callback, 200, $headers);
+    }
+
+    // Export Semua Murid (Yayasan)
+    public function exportMuridCsv()
+    {
+        $santris = Santri::with('lembaga')->latest()->get();
+
+        $headers = [
+            "Content-type"        => "text/csv",
+            "Content-Disposition" => "attachment; filename=laporan_murid_yayasan.csv",
+            "Pragma"              => "no-cache",
+            "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
+            "Expires"             => "0"
+        ];
+
+        $columns = ['Asal Lembaga', 'No. Induk', 'Nama Santri', 'Tempat Lahir', 'Tanggal Lahir', 'Jenis Kelamin', 'Alamat', 'Kelas', 'Status', 'Nama Orangtua', 'Asal Madin'];
+
+        $callback = function() use($santris, $columns) {
+            $file = fopen('php://output', 'w');
+            fputcsv($file, $columns);
+
+            foreach ($santris as $santri) {
+                fputcsv($file, [
+                    $santri->lembaga ? $santri->lembaga->nama_madrasah : 'Global',
+                    $santri->no_induk,
+                    $santri->nama_santri,
+                    $santri->tempat_lahir,
+                    $santri->tanggal_lahir,
+                    $santri->jenis_kelamin,
+                    $santri->alamat,
+                    $santri->kelas,
+                    $santri->status,
+                    $santri->nama_orangtua,
+                    $santri->asal_madin,
+                ]);
+            }
+            fclose($file);
+        };
+
+        return response()->stream($callback, 200, $headers);
+    }
+
+    // Export Semua Pengurus (Yayasan)
+    public function exportPengurusCsv()
+    {
+        $penguruses = Pengurus::with('lembaga')->latest()->get();
+
+        $headers = [
+            "Content-type"        => "text/csv",
+            "Content-Disposition" => "attachment; filename=laporan_pengurus_yayasan.csv",
+            "Pragma"              => "no-cache",
+            "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
+            "Expires"             => "0"
+        ];
+
+        $columns = ['Asal Lembaga', 'Nama', 'Jabatan', 'Status', 'Alamat', 'Keterangan'];
+
+        $callback = function() use($penguruses, $columns) {
+            $file = fopen('php://output', 'w');
+            fputcsv($file, $columns);
+
+            foreach ($penguruses as $pengurus) {
+                fputcsv($file, [
+                    $pengurus->lembaga ? $pengurus->lembaga->nama_madrasah : 'Global',
+                    $pengurus->nama,
+                    $pengurus->jabatan,
+                    $pengurus->status,
+                    $pengurus->alamat,
+                    $pengurus->keterangan ?? '-',
+                ]);
+            }
+            fclose($file);
+        };
+
+        return response()->stream($callback, 200, $headers);
+    }
 }
