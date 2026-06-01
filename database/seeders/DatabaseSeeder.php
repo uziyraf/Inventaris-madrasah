@@ -22,13 +22,15 @@ class DatabaseSeeder extends Seeder
         // ==========================================
         // 1. BUAT AKUN SUPER ADMIN YAYASAN
         // ==========================================
-        User::create([
-            'name' => 'Super Admin Yayasan',
-            'email' => 'yayasan@admin.com',
-            'password' => Hash::make('password123'),
-            'role' => 'yayasan',
-            'lembaga_id' => null,
-        ]);
+        User::firstOrCreate(
+            ['email' => 'yayasan@admin.com'],
+            [
+                'name' => 'Super Admin Yayasan',
+                'password' => Hash::make('password123'),
+                'role' => 'yayasan',
+                'lembaga_id' => null,
+            ]
+        );
 
         // ==========================================
         // 2. RUN REAL DATA SEEDER
