@@ -263,7 +263,7 @@
                                 class="absolute top-0 right-0 block h-1.5 w-1.5 rounded-full bg-red-500 ring-2 ring-white"></span>
                         </button>
                         <!-- Settings -->
-                        <button class="hover:text-gray-700 transition-colors">
+                        <a href="{{ route('admin.setting') }}" class="hover:text-gray-700 transition-colors">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round">
@@ -271,7 +271,7 @@
                                 <path
                                     d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
                             </svg>
-                        </button>
+                        </a>
                     </div>
 
                     <div class="hidden sm:block h-6 w-px bg-gray-200"></div>
@@ -279,10 +279,10 @@
                     <!-- Profile -->
                     <div class="flex items-center gap-3">
                         <div class="hidden sm:block text-right">
-                            <p class="text-[13px] font-bold text-[#1e293b] leading-none">Admin Alpha</p>
+                            <p class="text-[13px] font-bold text-[#1e293b] leading-none">{{ Auth::user()->name }}</p>
                             <p class="text-[10px] font-bold text-gray-400 mt-1 tracking-wide">Super Admin</p>
                         </div>
-                        <img src="https://ui-avatars.com/api/?name=Admin+Alpha&background=1e293b&color=fff" alt="Admin"
+                        <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&background=1e293b&color=fff" alt="Admin"
                             class="w-9 h-9 rounded-full border border-gray-200">
                     </div>
                 </div>

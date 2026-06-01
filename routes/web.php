@@ -13,6 +13,7 @@ use App\Http\Controllers\Yayasan\UserController;
 use App\Http\Controllers\Yayasan\LaporanYayasanController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
 
 // ==================================================
@@ -83,6 +84,11 @@ Route::middleware(['auth', 'role:lembaga'])->group(function () {
     Route::post('/laporan', [LaporanController::class, 'store'])->name('laporan.store');
     Route::delete('/laporan/{id}', [LaporanController::class, 'destroy'])->name('laporan.destroy');
 
+    // Setting Routes
+    Route::get('/setting', [SettingController::class, 'index'])->name('setting');
+    Route::put('/setting/profile', [SettingController::class, 'updateProfile'])->name('setting.profile');
+    Route::put('/setting/password', [SettingController::class, 'updatePassword'])->name('setting.password');
+
 });
 
 
@@ -112,4 +118,9 @@ Route::middleware(['auth', 'role:yayasan'])->prefix('admin')->name('admin.')->gr
     // Laporan Yayasan
     Route::get('/laporan', [LaporanYayasanController::class, 'index'])->name('laporan');
     Route::patch('/laporan/{id}/status', [LaporanYayasanController::class, 'updateStatus'])->name('laporan.status');
+
+    // Setting Routes
+    Route::get('/setting', [SettingController::class, 'index'])->name('setting');
+    Route::put('/setting/profile', [SettingController::class, 'updateProfile'])->name('setting.profile');
+    Route::put('/setting/password', [SettingController::class, 'updatePassword'])->name('setting.password');
 });
